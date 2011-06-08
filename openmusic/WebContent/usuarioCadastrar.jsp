@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
@@ -10,6 +12,47 @@
 <title>Cadastro do Usuário</title>
 </head>
 <body>
+
+
+    <form method="post" action="/openmusic/Usuarios" name="form1" >
+
+	<input type="text" name="busca"  />
+
+	<input type="submit" value="buscar" />
+
+</form>
+
+
+
+<%
+	List usuarios = (List) request.getAttribute("usuarios");
+    if(usuarios!= null) {
+	   %>
+	   <table>
+	   <tr><td>ID</td><td>Nome</td></tr>
+	   <%
+		   Iterator it = usuarios.iterator();
+		   while(it.hasNext()){
+			   Usuario u = (Usuario)it.next();
+		   %>
+		   <tr>
+		   		<td><%=u.getId() %></td>
+		   		<td><%=u.getNome() %></td>
+		   </tr>
+		 <%
+	   }
+	   %>
+	   </table>
+	<%
+	}else
+		out.println("<h1>Sem usuários</h1>");
+    %>
+
+
+
+<br /><br />
+
+
 <%
 Usuario usuario = (Usuario)request.getAttribute("Usuario");
 %>

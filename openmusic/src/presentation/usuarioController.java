@@ -48,7 +48,35 @@ public class usuarioController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+
+
+                	String busca = request.getParameter("busca");
+
+		try{
+
+			if(busca != null){
+
+				// Gera uma listagem de clientes
+				List<Usuario> usuarios = repositorio.getTop10ByName(busca);
+
+				// Passa a listagem para a p�gina JSP
+				request.setAttribute("usuarios", usuarios);
+
+				// Chamar a pagina JSP
+				RequestDispatcher listagem = request.getRequestDispatcher("usuarioCadastrar.jsp");
+				listagem.forward(request, response);
+
+			}
+
+
+
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
+
 		
+
+
 		try{
 			//recebendo dados do formulario
 			

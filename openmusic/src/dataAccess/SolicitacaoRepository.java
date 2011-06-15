@@ -58,5 +58,10 @@ public class SolicitacaoRepository {
 		return maneger.createQuery("select u from Solicitacao u order by u.id")
 		.setMaxResults(10).getResultList();
 	}
+	
+	public Solicitacao getByUsuario(int cod1, int cod2){
+		return maneger.createQuery("select s from Solicitacao s where idsolicitador = id1 and idsolicitado = id2")
+		.setParameter(id1, cod1).setParameter(id2, cod2).getSinleResults();
+	}
 
 }

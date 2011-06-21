@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.*;
 
+
 public class UsuarioRepository {
 	
 	private EntityManager maneger;
@@ -58,5 +59,25 @@ public class UsuarioRepository {
 		return maneger.createQuery("select u from Usuario u order by u.nome")
 		.setMaxResults(10).getResultList();
 	}
+	
+	public Usuario OpenByLogin(String usuario){
+		
+			if(maneger.createQuery("select u from Usuario u where u.email = :log")
+			.setParameter("log", usuario)
+			.getSingleResult() == null){
+				
+				return null;
+				
+			}else{
+				return  (Usuario) maneger.createQuery("select u from Usuario u where u.email = :log")
+				.setParameter("log", usuario)
+				.getSingleResult();
+			}
+			
+		 
+		
+	}
+	
+	
 
 }

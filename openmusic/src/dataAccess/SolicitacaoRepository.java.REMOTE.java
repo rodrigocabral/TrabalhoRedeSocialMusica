@@ -68,11 +68,7 @@ public class SolicitacaoRepository {
 	
 	public Solicitacao getBySolicitacao(int cod){
 		return (Solicitacao)maneger.createQuery("select s from Solicitacao s where s.idsolicitado = :id")
-<<<<<<< HEAD
-		.setParameter("id", cod)
-=======
 		.setParameter("id1", cod)
->>>>>>> 36a3f0f9bc619262e4363a89c09e26996d4e1610
 		.getSingleResult();
 	}
 

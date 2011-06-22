@@ -60,20 +60,8 @@ public class SolicitacaoRepository {
 	}
 	
 	public Solicitacao getByUsuario(int cod1, int cod2){
-		return (Solicitacao)maneger.createQuery("select s from Solicitacao s where s.idsolicitador = :id1 and s.idsolicitado = :id2")
-		.setParameter("id1", cod1)
-		.setParameter("id2", cod2)
-		.getSingleResult();
-	}
-	
-	public Solicitacao getBySolicitacao(int cod){
-		return (Solicitacao)maneger.createQuery("select s from Solicitacao s where s.idsolicitado = :id")
-<<<<<<< HEAD
-		.setParameter("id", cod)
-=======
-		.setParameter("id1", cod)
->>>>>>> 36a3f0f9bc619262e4363a89c09e26996d4e1610
-		.getSingleResult();
+		return maneger.createQuery("select s from Solicitacao s where idsolicitador = id1 and idsolicitado = id2")
+		.setParameter(id1, cod1).setParameter(id2, cod2).getSinleResults();
 	}
 
 }

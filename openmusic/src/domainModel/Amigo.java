@@ -16,10 +16,10 @@ public class Amigo {
 	private int id;
 	
 	@Column
-	private int idamigo1;
+	private Usuario idamigo1;
 	
 	@Column
-	private int idamigo2;
+	private Usuario idamigo2;
 
 	public int getId() {
 		return id;
@@ -29,19 +29,19 @@ public class Amigo {
 		this.id = id;
 	}
 
-	public int getIdAmigo1() {
+	public Usuario getIdAmigo1() {
 		return idamigo1;
 	}
 
-	public void setIdAmigo1(int idAmigo1) {
+	public void setIdAmigo1(Usuario idAmigo1) {
 		this.idamigo1 = idAmigo1;
 	}
 
-	public int getIdAmigo2() {
+	public Usuario getIdAmigo2() {
 		return idamigo2;
 	}
 
-	public void setIdAmigo2(int idAmigo2) {
+	public void setIdAmigo2(Usuario idAmigo2) {
 		this.idamigo2 = idAmigo2;
 	}
 	

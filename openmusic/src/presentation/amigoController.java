@@ -2,9 +2,13 @@ package presentation;
 
 
 import domainModel.Amigo;
+import domainModel.Solicitacao;
+import domainModel.Usuario;
 
 
 import dataAccess.AmigoRepository;
+import dataAccess.SolicitacaoRepository;
+import dataAccess.UsuarioRepository;
 
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
@@ -25,6 +29,9 @@ public class amigoController extends HttpServlet {
 	
 	//declarando repositorio
 	AmigoRepository repositorio;
+	SolicitacaoRepository solicitacaorepositorio;
+	UsuarioRepository usuariorepositorio;
+	
        
     //construtor
     public amigoController() {
@@ -32,6 +39,8 @@ public class amigoController extends HttpServlet {
         
         //inicializando repositorio
         repositorio = new AmigoRepository();
+        solicitacaorepositorio = new SolicitacaoRepository();
+        usuariorepositorio = new UsuarioRepository();
     }
 
 	/**
@@ -39,9 +48,28 @@ public class amigoController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String reposta = request.getParameter("resp");
+		String cod_usuario = request.getAttribute("cod_usuario");
 		
-		
-		
+		try{
+			if(reposta.equals("s")){
+				//salvar na tabela amigos e excluir de  solicitação
+				Solicitacao s = solicitacaorepositorio.getBySolicitacao(Integer.parseInt(cod_usuario));
+								
+				Amigo a = new Amigo();
+				a.setIdAmigo1(s.getIdSolicitador());
+				a.setIdAmigo2(s.getIdSolicitado());
+				repositorio.Save(a);
+				solicitacaorepositorio.Delete(s);
+			}else{
+				//excluir de  solicitação
+				Solicitacao s = solicitacaorepositorio.getBySolicitacao(Integer.parseInt(cod_usuario));
+				solicitacaorepositorio.Delete(s);
+			}
+		}
+		catch(Exception ex){
+			ex.printStackTrace();
+		}
 	}
 
 	/**
@@ -49,56 +77,8 @@ public class amigoController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
-
-                	String busca = request.getParameter("busca");
-
-		try{
-
-			if(busca != null){
-
-				// Gera uma listagem de clientes
-				List<Amigo> amigos = repositorio.getTop10ByName();
-
-				// Passa a listagem para a pï¿½gina JSP
-				request.setAttribute("amigos", amigos);
-
-				// Chamar a pagina JSP
-				RequestDispatcher listagem = request.getRequestDispatcher("amigosListagem.jsp");
-				listagem.forward(request, response);
-
-			}
-
-
-
-		}catch(Exception ex){
-			ex.printStackTrace();
-		}
-
 		
 
-
-		try{
-			//recebendo dados do formulario
-			
-			
-			String idAmigo1 = request.getParameter("idAmigo1");
-			String idAmigo2 = request.getParameter("idAmigo2");
-			
-			
-			Amigo amigo = new Amigo();
-			
-			amigo.setIdAmigo1(Integer.parseInt(idAmigo1));
-			amigo.setIdAmigo2(Integer.parseInt(idAmigo2));
-			
-			
-								
-			repositorio.Save(amigo);
-			
-		}
-		catch(Exception ex){
-			ex.printStackTrace();
-		}
 	}
 
 }

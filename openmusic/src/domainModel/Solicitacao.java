@@ -16,10 +16,10 @@ public class Solicitacao {
 	private int id;
 	
 	@Column
-	private int idsolicitador;
+	private Usuario idsolicitador;
 	
 	@Column
-	private int idsolicitado;
+	private Usuario idsolicitado;
 
 	public int getId() {
 		return id;
@@ -29,19 +29,19 @@ public class Solicitacao {
 		this.id = id;
 	}
 
-	public int getIdSolicitador() {
+	public Usuario getIdSolicitador() {
 		return idsolicitador;
 	}
 
-	public void setIdSolicitador(int idsolicitador) {
+	public void setIdSolicitador(Usuario idsolicitador) {
 		this.idsolicitador = idsolicitador;
 	}
 
-	public int getIdSolicitado() {
+	public Usuario getIdSolicitado() {
 		return idsolicitado;
 	}
 
-	public void setIdSolicitado(int idsolicitado) {
+	public void setIdSolicitado(Usuario idsolicitado) {
 		this.idsolicitado = idsolicitado;
 	}
 	

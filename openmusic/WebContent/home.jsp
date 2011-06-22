@@ -2,14 +2,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@ page import="java.util.List" %>
-<<<<<<< HEAD
     <%@ page import="domainModel.Usuario" %>
     
     <%@ page import="domainModel.Solicitacao,domainModel.Amigo,dataAccess.UsuarioRepository,dataAccess.SolicitacaoRepository,dataAccess.AmigoRepository" %>
-=======
-    <%@ page import="domainModel.Usuario,domainModel.Solicitacao,domainModel.Amigo" %>
-    <%@ page import="dataAccess.UsuarioRepository,dataAccess.SolicitacaoRepository,dataAccess.AmigoRepository" %>
->>>>>>> 36a3f0f9bc619262e4363a89c09e26996d4e1610
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -20,11 +15,7 @@ AmigoRepository amigorepositorio = new AmigoRepository();
 UsuarioRepository usuariorepositorio =  new UsuarioRepository();
 
 //pegar o login da sessão
-<<<<<<< HEAD
 String cod_usuario = (String) request.getAttribute("cod_usuario");
-=======
-String cod_usuario = request.getAttribute("cod_usuario");
->>>>>>> 36a3f0f9bc619262e4363a89c09e26996d4e1610
 
 //realizar seleção conforme id do usuario logado
 SolicitacaoRepository solicitacaorepositorio = new SolicitacaoRepository();

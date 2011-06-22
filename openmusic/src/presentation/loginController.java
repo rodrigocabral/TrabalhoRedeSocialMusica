@@ -23,7 +23,6 @@ public class loginController extends HttpServlet {
      */
     public loginController() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -60,11 +59,11 @@ public class loginController extends HttpServlet {
 			}
 			else {
 				if(user.getSenha().equalsIgnoreCase(senha)){
-					//request.setAttribute("msg", "Logado");
+					//int id = user.getId();
 					request.setAttribute("login_usuario", usuario);
-					request.setAttribute("senha_usuario", senha);
+					request.setAttribute("cod_usuario", Integer.toString(user.getId()));
 					request.setAttribute("usuario", user);
-					request.getRequestDispatcher("perfilUsuarios.jsp").forward(request, response);
+					request.getRequestDispatcher("home.jsp").forward(request, response);
 					return;
 				}
 				else {

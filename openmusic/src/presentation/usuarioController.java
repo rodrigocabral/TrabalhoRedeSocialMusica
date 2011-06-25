@@ -10,6 +10,7 @@ import javax.servlet.RequestDispatcher;
 
 import javax.servlet.ServletException;
 //import javax.servlet.annotation.WebServlet;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,7 +19,7 @@ import java.util.List;
 /**
  * Servlet implementation class usuarioController
  */
-//@WebServlet("/Usuario")
+@WebServlet("/Usuarios")
 public class usuarioController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -37,19 +38,8 @@ public class usuarioController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//pegar o codigo do usuário clicado após realizar a busca
-		String cod = request.getParameter("cod");
+		//request.getRequestDispatcher("perfilUsuarios.jsp").forward(request, response);
 		
-		try{
-		Usuario u = repositorio.Open(Integer.parseInt(cod));
-		request.setAttribute("usuario", u);
-		request.getRequestDispatcher("perfilUsuario.jsp").forward(request, response);
-		return;
-		}
-		catch (Exception ex) {
-			ex.printStackTrace();
-		}
 	}
 
 	/**
@@ -60,6 +50,20 @@ public class usuarioController extends HttpServlet {
 		
 		try{
 			//recebendo dados do formulario
+			
+			String busca = request.getParameter("busca");
+			
+			if(busca != null){
+				
+				List<Usuario> usuarios = repositorio.getTop10ByName(busca);
+				
+				request.setAttribute("usuarios", usuarios);
+				
+				RequestDispatcher listagem = request.getRequestDispatcher("busca.jsp");
+				listagem.forward(request, response);
+				
+			}
+			
 			
 			
 			String nome = request.getParameter("nome");

@@ -13,6 +13,7 @@ import javax.servlet.RequestDispatcher;
 
 import javax.servlet.ServletException;
 //import javax.servlet.annotation.WebServlet;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,7 +24,7 @@ import java.util.List;
 /**
  * Servlet implementation class usuarioController
  */
-//@WebServlet("/Solicitacao")
+@WebServlet("/Solicitacao")
 public class solicitacaoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	

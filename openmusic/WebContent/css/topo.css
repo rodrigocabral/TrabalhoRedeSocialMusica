@@ -1,0 +1,147 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{
+	margin: 0 auto;
+}
+#menu{
+	background:url(../imagens/fundo_menu.png);
+	width:100%;
+	height:40px;
+	text-align:center;
+}
+
+#geral_topo{
+	background:url(../imagens/fundo_topo.png);
+	width:100%;
+	height:160px;
+}
+#foto{
+	width:187px;
+	height:35px;
+	padding-bottom: 10px;
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:12px;
+	float:right;
+	color:#333;
+	margin-right:15px;
+	background:url(../imagens/botao_foto.png);
+}
+#efetuar{
+	width:187px;
+	height:35px;
+	padding-bottom: 10px;
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:16px;
+	float:right;
+	color:#666666;
+	margin-right:15px;
+	background:url(../imagens/botao_foto.png);
+}
+#conteudo_topo{
+	margin:auto;
+	width:800px;
+	height:128px;
+}
+#logomarca{
+	margin-top:28px;
+	margin-left: -39px;
+	float:left;
+	background: url(../imagens/logo.png);
+	width:441px;
+	height:128px;
+}
+
+/* Home */
+div.texto1  { 
+position:absolute;
+top:1px;
+bottom: 1px;
+left:1px;
+color:#666666;
+font: 30px Arial, "Arial", Times, serif;
+}
+
+div.sombra11 {
+position:relative;
+color:#CCCCCC;
+font:  30px Arial, "Arial", Times, serif;
+}
+#geral_conteudo{
+	width: 800px;
+	margin:auto;
+	min-height: 400px;
+}
+#titulo_pagina{
+	font-family: Arial, Helvetica, sans-serif;
+	margin-left:-30px!IMPORTANT;
+	width:auto;
+}
+#foto_geral{
+	display:table;
+	width:380px;
+	padding-left:10px;
+}
+#titulo_input.text_foto{
+	font-family: Arial, Helvetica, sans-serif;
+	margin-left:0px;
+	font-size:24px;
+	margin-top:10px;
+	margin-top:10px;
+	margin-bottom:15px;
+	display:table;
+	height:10px;
+	color:#CCC;
+}
+#restricao_foto{
+	font-family: Arial, Helvetica, sans-serif;
+	margin-left:0px;
+	font-size:12px;
+	text-align:center;
+	width:220px;
+	float:right;
+	margin-top:10px;
+	height:10px;
+	color:#999;
+}
+
+#titulo_input{
+	font-family: Arial, Helvetica, sans-serif;
+	margin-left:10px;
+	font-size:14px;
+	height:10px;
+	color:#666;
+}
+/* Home input efeito*/
+#quadro{
+	width:379px;
+	margin-left:10px;
+	height:75px;
+}
+#file{
+	display:none;
+}
+
+.fakeupload {
+          width: 391PX;
+		  height:31PX;
+          background: url(../imagens/fundo_input.png);
+          cursor: default;
+    }
+input,SELECT {
+ background-color: #FFF;
+ border: 0px solid #e4e4e4;
+ letter-spacing: 1px;
+ font-size: 11px;
+ color: #CCC;
+ padding-left: 8px;
+  padding-right: 0px;
+ font-size:20px;
+ padding-top: 7px;
+ padding-bottom: 0px;
+ margin-left: 5px;
+ height: 50px;
+ vertical-align: middle;
+ margin-bottom:10px;
+ margin-top:2px;
+ }

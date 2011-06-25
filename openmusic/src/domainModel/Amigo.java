@@ -12,13 +12,15 @@ public class Amigo {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@OneToMany
 	@Column
 	private int id;
 	
-	@Column
+	
+	@JoinColumn(name="idamigo1")
 	private Usuario idamigo1;
 	
-	@Column
+	@JoinColumn(name="idamigo2")
 	private Usuario idamigo2;
 
 	public int getId() {

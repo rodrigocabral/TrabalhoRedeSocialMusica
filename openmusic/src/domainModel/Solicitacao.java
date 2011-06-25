@@ -7,7 +7,7 @@ import java.util.Date;
 import javax.persistence.*;
 
 @Entity
-@Table(name="usuarios")
+@Table(name="solicitacoes")
 public class Solicitacao {
 	
 	@Id
@@ -15,10 +15,12 @@ public class Solicitacao {
 	@Column
 	private int id;
 	
-	@Column
+	@ManyToOne
+	@JoinColumn(name="idsolicitador")
 	private Usuario idsolicitador;
 	
-	@Column
+	@ManyToOne
+	@JoinColumn(name="idsolicitado")
 	private Usuario idsolicitado;
 
 	public int getId() {

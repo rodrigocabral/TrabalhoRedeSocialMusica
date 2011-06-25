@@ -7,7 +7,7 @@ import java.util.Date;
 import javax.persistence.*;
 
 @Entity
-@Table(name="usuarios")
+@Table(name="recado")
 public class Recado {
 	
 	@Id
@@ -15,7 +15,7 @@ public class Recado {
 	@Column
 	private int id;
 	
-	@Column
+	@JoinColumn(name="idamigo")
 	private int idamigo;
 	
 	@Column

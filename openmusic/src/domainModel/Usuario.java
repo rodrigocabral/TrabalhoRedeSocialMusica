@@ -19,6 +19,9 @@ public class Usuario {
 	private String nome;
 	
 	@Column
+	private String login;
+	
+	@Column
 	private String sobrenome;
 	
 	@Column
@@ -30,10 +33,6 @@ public class Usuario {
 	@Column
 	private String sexo;
 	
-	@Temporal(TemporalType.DATE)
-	@Column
-	private Date datanascimento;
-	
 	@Column
 	private String cidade;
 	
@@ -43,33 +42,12 @@ public class Usuario {
 	@Column
 	private String pais;
 	
+	@Temporal(TemporalType.DATE)
+	@Column
+	private Date datanascimento;
 	
-	public String getCidade() {
-		return cidade;
-	}
 
-	public void setCidade(String cidade) {
-		this.cidade = cidade;
-	}
-
-	public String getEstado() {
-		return estado;
-	}
-
-	public void setEstado(String estado) {
-		this.estado = estado;
-	}
-
-	public String getPais() {
-		return pais;
-	}
-
-	public void setPais(String pais) {
-		this.pais = pais;
-	}
-
-
-	//set get id
+	
 	public int getId() {
 		return id;
 	}
@@ -137,6 +115,38 @@ public class Usuario {
 		catch(Exception ex){
 			throw ex;
 		}
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
+
+	public String getCidade() {
+		return cidade;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setPais(String pais) {
+		this.pais = pais;
+	}
+
+	public String getPais() {
+		return pais;
 	}
 	
 	

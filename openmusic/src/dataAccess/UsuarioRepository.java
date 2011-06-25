@@ -60,22 +60,27 @@ public class UsuarioRepository {
 		.setMaxResults(10).getResultList();
 	}
 	
-	public Usuario OpenByLogin(String usuario){
-		
-			if(maneger.createQuery("select u from Usuario u where u.email = :log")
-			.setParameter("log", usuario)
-			.getSingleResult() == null){
-				
-				return null;
-				
-			}else{
-				return  (Usuario) maneger.createQuery("select u from Usuario u where u.email = :log")
-				.setParameter("log", usuario)
-				.getSingleResult();
-			}
+	public List getTop10ByName(String busca){
+		try{
+			return maneger.createQuery("select u from Usuario u where u.nome = :b")
+			.setParameter("b", busca)
+			.setMaxResults(10).getResultList();
+		}catch(Exception ex){
+			ex.printStackTrace();
 			
-		 
-		
+		}
+		return null;
+	}
+	
+	public Usuario OpenByLogin(String usuario){
+		try{
+			return (Usuario) maneger.createQuery("select u from Usuario u where u.email = :log")
+			.setParameter("log", usuario)
+			.getSingleResult();		 
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
+		return null;
 	}
 	
 	

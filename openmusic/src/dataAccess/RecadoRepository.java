@@ -54,8 +54,9 @@ public class RecadoRepository {
 		}
 	}
 	
-	public List getTop10ByName(){
-		return maneger.createQuery("select u from Recado u order by u.id")
+	public List getTop10ByName(int cod){
+		return maneger.createQuery("select r from Recado r join idusuario u where u.id  =:id")
+		.setParameter("id", cod)
 		.setMaxResults(10).getResultList();
 	}
 

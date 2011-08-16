@@ -15,9 +15,29 @@ public class Recado {
 	@Column
 	private int id;
 	
-	@JoinColumn(name="idamigo")
-	private int idamigo;
+	@JoinColumn(name="idusuario")
+	private Usuario idusuario;
 	
+	
+	@JoinColumn(name="idamigo")
+	private Usuario idamigo;
+	
+	public Usuario getIdusuario() {
+		return idusuario;
+	}
+
+	public void setIdusuario(Usuario idusuario) {
+		this.idusuario = idusuario;
+	}
+
+	public Usuario getIdamigo() {
+		return idamigo;
+	}
+
+	public void setIdamigo(Usuario idamigo) {
+		this.idamigo = idamigo;
+	}
+
 	@Column
 	private String recado;
 
@@ -29,13 +49,6 @@ public class Recado {
 		this.id = id;
 	}
 
-	public int getIdAmigo() {
-		return idamigo;
-	}
-
-	public void setIdAmigo(int idAmigo) {
-		this.idamigo = idAmigo;
-	}
 
 	public String getRecado() {
 		return recado;

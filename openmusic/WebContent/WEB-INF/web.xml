@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
-  <display-name>openmusic</display-name>
+  <display-name>openmusic2</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
@@ -18,5 +18,55 @@
   <servlet-mapping>
     <servlet-name>Usuario</servlet-name>
     <url-pattern>/Usuarios</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Login</display-name>
+    <servlet-name>Login</servlet-name>
+    <servlet-class>presentation.loginController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Login</servlet-name>
+    <url-pattern>/Login</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Perfil</display-name>
+    <servlet-name>Perfil</servlet-name>
+    <servlet-class>presentation.perfilController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Perfil</servlet-name>
+    <url-pattern>/Perfil</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Recado</display-name>
+    <servlet-name>Recado</servlet-name>
+    <servlet-class>presentation.recadoController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Recado</servlet-name>
+    <url-pattern>/Recado</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Solicitacao</display-name>
+    <servlet-name>Solicitacao</servlet-name>
+    <servlet-class>presentation.solicitacaoController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Solicitacao</servlet-name>
+    <url-pattern>/Solicitacao</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Amigo</display-name>
+    <servlet-name>Amigo</servlet-name>
+    <servlet-class>presentation.amigoController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Amigo</servlet-name>
+    <url-pattern>/Amigo</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -19,9 +19,6 @@ public class Usuario {
 	private String nome;
 	
 	@Column
-	private String login;
-	
-	@Column
 	private String sobrenome;
 	
 	@Column
@@ -106,10 +103,11 @@ public class Usuario {
 		return datanascimento;
 	}
 
-	public void setDatanascimento(String datanascimento) throws Exception{
+	public void setDatanascimento(String datanasc) throws Exception{
 		try{
-		DateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");  
-		this.datanascimento = (java.util.Date)formatter.parse(datanascimento);
+		DateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+		formatter.setLenient (false); 
+		this.datanascimento = (java.util.Date)formatter.parse(datanasc);
 		System.out.println(this.datanascimento);
 		}
 		catch(Exception ex){
@@ -117,13 +115,7 @@ public class Usuario {
 		}
 	}
 
-	public void setLogin(String login) {
-		this.login = login;
-	}
-
-	public String getLogin() {
-		return login;
-	}
+	
 
 	public void setCidade(String cidade) {
 		this.cidade = cidade;

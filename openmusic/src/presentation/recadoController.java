@@ -5,13 +5,13 @@ import domainModel.Recado;
 
 
 import dataAccess.RecadoRepository;
+import dataAccess.UsuarioRepository;
 
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 
 import javax.servlet.ServletException;
 //import javax.servlet.annotation.WebServlet;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,7 +20,7 @@ import java.util.List;
 /**
  * Servlet implementation class usuarioController
  */
-@WebServlet("/Recado")
+//@WebServlet("/Recado")
 public class recadoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -41,31 +41,21 @@ public class recadoController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		
-		
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-
-
-                	String busca = request.getParameter("busca");
+		String cod_usuario = request.getParameter("cod");
 
 		try{
 
-			if(busca != null){
+			if(cod_usuario != null){
 
 				// Gera uma listagem de clientes
-				List<Recado> recados = repositorio.getTop10ByName();
+				List<Recado> recados = repositorio.getTop10ByName(Integer.parseInt(cod_usuario));
 
-				// Passa a listagem para a pï¿½gina JSP
+				
 				request.setAttribute("recados", recados);
+				request.setAttribute("cod_usuario_recado", cod_usuario);
 
 				// Chamar a pagina JSP
-				RequestDispatcher listagem = request.getRequestDispatcher("recadosListar.jsp");
+				RequestDispatcher listagem = request.getRequestDispatcher("recadoUsuario.jsp");
 				listagem.forward(request, response);
 
 			}
@@ -77,25 +67,53 @@ public class recadoController extends HttpServlet {
 		}
 
 		
+		
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+
+
+                	
 
 
 		try{
 			//recebendo dados do formulario
 			
+			String recado = request.getParameter("recado");
 			
-			String idamigos = request.getParameter("idamigos");
-			String texto = request.getParameter("recado");
-			
-			
-			Recado recado = new Recado();
-			
-			recado.setIdAmigo(Integer.parseInt(idamigos));
-			recado.setRecado(texto);
-			
-			
-								
-			repositorio.Save(recado);
-			
+			if(recado != null){
+				
+				
+				Recado rec = new Recado();
+				
+				UsuarioRepository user_repo = new UsuarioRepository();
+				String cod_usuario_recado = request.getParameter("cod_usuario_recado");
+				
+				rec.setIdusuario(user_repo.Open(Integer.parseInt(cod_usuario_recado)));
+				
+				rec.setRecado(recado);
+				
+				String cod_usuario = (String)request.getAttribute("cod_usuario");
+				
+				rec.setIdamigo(user_repo.Open(Integer.parseInt(cod_usuario)));
+				
+				
+				repositorio.Save(rec);
+				request.getRequestDispatcher("recadoUsuario.jsp").forward(request, response);
+				return;
+				
+			}else{
+				
+				request.setAttribute("erro", "É necessário escrever um texto");
+				request.getRequestDispatcher("recadoUsuario.jsp").forward(request, response);
+				return;
+				
+				
+			}
 		}
 		catch(Exception ex){
 			ex.printStackTrace();

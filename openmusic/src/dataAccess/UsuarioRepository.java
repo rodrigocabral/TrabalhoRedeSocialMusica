@@ -62,7 +62,7 @@ public class UsuarioRepository {
 	
 	public List getTop10ByName(String busca){
 		try{
-			return maneger.createQuery("select u from Usuario u where u.nome =:b")
+			return maneger.createQuery("select u from Usuario u where u.nome = :b")
 			.setParameter("b", busca)
 			.setMaxResults(10).getResultList();
 		}catch(Exception ex){

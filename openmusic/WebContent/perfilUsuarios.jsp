@@ -12,7 +12,7 @@
 <title><%=usuario.getNome() %></title>
 </head>
 <body>
-<!-- atributo com mensagem de confirmação de solicitação de amizade -->
+<!-- atributo com mensagem de confirmação de solicitação de amizade, aguardando aceitação do usuario -->
 <%=request.getAttribute("confirma") %>
 
 <form action="/openmusic/Solicitacao?solicitacao=new&cod=<%=usuario.getId() %>">
@@ -20,6 +20,9 @@
 <input type="submit" value="Adicionar aos Amigos"/>
 
 </form>
+
+
+<a href="/openmusic/Recado?recado=new&cod=<%=usuario.getId() %>">Recados</a>
 
 </body>
 </html> 

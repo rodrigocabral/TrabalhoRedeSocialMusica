@@ -2,7 +2,7 @@ package presentation;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
+//import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,7 +13,7 @@ import domainModel.Usuario;
 /**
  * Servlet implementation class loginController
  */
-@WebServlet("/Login")
+//@WebServlet("/Login")
 public class loginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

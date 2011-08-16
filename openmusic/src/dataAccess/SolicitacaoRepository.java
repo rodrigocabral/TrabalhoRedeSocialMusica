@@ -60,14 +60,14 @@ public class SolicitacaoRepository {
 	}
 	
 	public Solicitacao getByUsuario(int cod1, int cod2){
-		return (Solicitacao)maneger.createQuery("select s from Solicitacao s join idsolicitado u join idsolicitador us where u.id =:id1 and us.id =:id2")
+		return (Solicitacao)maneger.createQuery("select s from Solicitacao s join idsolicitado u join idsolicitador us where u.id = :id1 and us.id = :id2")
 		.setParameter("id1", cod1)
 		.setParameter("id2", cod2)
 		.getSingleResult();
 	}
 	
 	public List getBySolicitacao(int cod){
-		return maneger.createQuery("select s, u from Solicitacao s join s.idsolicitado u where u.id =:id")
+		return maneger.createQuery("select s from Solicitacao s join idsolicitado u where u.id = :id")
 		.setParameter("id", cod)
 		.getResultList();
 	}

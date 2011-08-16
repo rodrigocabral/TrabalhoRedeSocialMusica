@@ -1,5 +1,5 @@
-#Sun Jun 05 01:08:17 BRT 2011
+#Thu Aug 04 23:09:52 BRT 2011
 eclipse.preferences.version=1
 org.eclipse.jpt.core.discoverAnnotatedClasses=false
 org.eclipse.jpt.core.metamodelSourceFolderName=src
-org.eclipse.jpt.core.platform=generic2_0
+org.eclipse.jpt.core.platform=eclipselink2_1

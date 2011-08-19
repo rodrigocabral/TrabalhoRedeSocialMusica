@@ -59,10 +59,10 @@ public class loginController extends HttpServlet {
 			}
 			else {
 				if(user.getSenha().equals(senha)){
-					String id = Integer.toString((user.getId()));
+					int id = user.getId();
 					request.setAttribute("login_usuario", usuario);
 					request.setAttribute("cod_usuario", id);
-					System.out.print(id);
+					//System.out.print(id);
 					request.setAttribute("nome", user.getNome());
 					request.getRequestDispatcher("home.jsp").forward(request, response);
 					return;
@@ -72,8 +72,6 @@ public class loginController extends HttpServlet {
 					request.getRequestDispatcher("login.jsp").forward(request, response);
 					return;
 				}
-				
-				
 			}
 				
 		}

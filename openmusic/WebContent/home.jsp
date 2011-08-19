@@ -3,7 +3,7 @@
 <%
 //declarando repositorio de amigo e usuario
 AmigoRepository amigorepositorio = new AmigoRepository();
-UsuarioRepository usuariorepositorio =  new UsuarioRepository();
+UsuarioRepository usuarioRepository =  new UsuarioRepository();
 
 //pegar o login da sessão
 String cod_usuario = (String) request.getAttribute("cod_usuario");
@@ -62,7 +62,9 @@ if(s != null){
 Lista de Amigos
 <div>
 <%
-List<Amigo> amigo = amigorepositorio.getTop10ByName();
+
+
+List<Amigo> amigo = amigorepositorio.getTop10ByName(cod);
 for(Amigo a : amigo){
 	if(a.getIdAmigo1().getId() != Integer.parseInt(cod_usuario)){
 		System.out.println(a.getIdAmigo1().getNome());

@@ -54,8 +54,9 @@ public class AmigoRepository {
 		}
 	}
 	
-	public List getTop10ByName(){
-		return maneger.createQuery("select u from Amigo u order by u.nome")
+	public List getTop10ByName(int cod){
+		return maneger.createQuery("select a, u, us from Amigo a join a.idamigo1 u join a.idamigo2 us where u.id =:id or us.id =:id")
+		.setParameter("id", cod)
 		.setMaxResults(10).getResultList();
 	}
 

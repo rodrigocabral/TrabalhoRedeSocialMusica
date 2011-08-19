@@ -48,8 +48,8 @@ CREATE TABLE `recado` (
   KEY `idamigos` (`id`),
   KEY `idamigo` (`idamigo`),
   KEY `idusuario` (`idusuario`),
-  CONSTRAINT `idusuario` FOREIGN KEY (`idusuario`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `idamigo` FOREIGN KEY (`idamigo`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `idamigo` FOREIGN KEY (`idamigo`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `idusuario` FOREIGN KEY (`idusuario`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `recado` */

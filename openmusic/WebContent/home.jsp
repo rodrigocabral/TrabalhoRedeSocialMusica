@@ -6,14 +6,14 @@ AmigoRepository amigorepositorio = new AmigoRepository();
 UsuarioRepository usuarioRepository =  new UsuarioRepository();
 
 //pegar o login da sessão
-String cod_usuario = (String) request.getAttribute("cod_usuario");
-
+int cod = Integer.parseInt(request.getAttribute("cod_usuario").toString());
+/*
 if (cod_usuario.equals(null)){
 	cod_usuario = "1";
 }
+*/
 
-
-int cod = Integer.parseInt(cod_usuario);
+//int cod = Integer.parseInt(cod_usuario);
 
 //realizar seleção conforme id do usuario logado
 SolicitacaoRepository solicitacaorepositorio = new SolicitacaoRepository();
@@ -66,7 +66,7 @@ Lista de Amigos
 
 List<Amigo> amigo = amigorepositorio.getTop10ByName(cod);
 for(Amigo a : amigo){
-	if(a.getIdAmigo1().getId() != Integer.parseInt(cod_usuario)){
+	if(a.getIdAmigo1().getId() != cod){
 		System.out.println(a.getIdAmigo1().getNome());
 	}else{
 		System.out.println(a.getIdAmigo2().getNome());

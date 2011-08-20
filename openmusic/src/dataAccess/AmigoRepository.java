@@ -8,20 +8,20 @@ import javax.persistence.*;
 
 public class AmigoRepository {
 	
-	private EntityManager maneger;
+	private EntityManager manager;
 	private EntityManagerFactory factory;
 	private EntityTransaction transaction;
 	
 	public AmigoRepository(){
 		factory = Persistence.createEntityManagerFactory("openmusic");
-		maneger = factory.createEntityManager();
+		manager = factory.createEntityManager();
 	}
 	
 	public void Save(Amigo obj) throws Exception{
 		try{
-			transaction = maneger.getTransaction();
+			transaction = manager.getTransaction();
 			transaction.begin();
-			maneger.persist(obj);
+			manager.persist(obj);
 			transaction.commit();
 		}
 		catch(Exception ex){
@@ -33,9 +33,9 @@ public class AmigoRepository {
 	//verificar utilidade para a rede social
 	public void Delete(Amigo obj) throws Exception{
 		try{
-			transaction = maneger.getTransaction();
+			transaction = manager.getTransaction();
 			transaction.begin();
-			maneger.remove(obj);
+			manager.remove(obj);
 			transaction.commit();
 		}
 		catch(Exception ex){
@@ -47,7 +47,7 @@ public class AmigoRepository {
 	
 	public Amigo Open(int id) throws Exception{
 		try{
-			return maneger.find(Amigo.class, id);
+			return manager.find(Amigo.class, id);
 		}
 		catch(Exception ex){
 			throw ex;
@@ -55,8 +55,9 @@ public class AmigoRepository {
 	}
 	
 	public List getTop10ByName(int cod){
-		return maneger.createQuery("select a, u, us from Amigo a join a.idamigo1 u join a.idamigo2 us where u.id =:id or us.id =:id")
+		return manager.createQuery("select a from Amigo a join a.idamigo1 u join a.idamigo2 us where u.id =:id or us.id =:id2")
 		.setParameter("id", cod)
+		.setParameter("id2", cod)
 		.setMaxResults(10).getResultList();
 	}
 

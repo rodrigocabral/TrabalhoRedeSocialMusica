@@ -71,7 +71,7 @@ public class usuarioController extends HttpServlet {
 			String email = request.getParameter("email");
 			String senha = request.getParameter("senha");
 			String sexo = request.getParameter("sexo");
-			String data_nascimento = request.getParameter("datanascimento");
+			String data_nascimento = request.getParameter("data_nascimento");
 			String cidade = request.getParameter("cidade");
 			String estado = request.getParameter("estado");
 			String pais = request.getParameter("pais");

@@ -18,4 +18,20 @@
 
 </head>
 <body>
+<div id="menu">
+<div class="item_menu">home </div> 
+<div class="item_menu">gravações</div>
+<div class="item_menu"> recados </div>
+  <form method="post" action="/openmusic/Usuarios" name="form1" >
+	<input type="text" name="busca"  />
+	<input type="submit" value="buscar" />
+</form>
+
+</div>
+<div id="geral_topo">
+	<div id="conteudo_topo">
+        <div id="logomarca">
+        	</div>
+     </div>
+</div>
 

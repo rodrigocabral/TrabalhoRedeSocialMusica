@@ -67,7 +67,7 @@ public class SolicitacaoRepository {
 	}
 	
 	public List getBySolicitacao(int cod){
-		return maneger.createQuery("select s, u from Solicitacao s join s.idsolicitado u where u.id =:id")
+		return maneger.createQuery("select s from Solicitacao s join s.idsolicitado u where u.id =:id")
 		.setParameter("id", cod)
 		.getResultList();
 	}

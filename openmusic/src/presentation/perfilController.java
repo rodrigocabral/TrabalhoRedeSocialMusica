@@ -2,7 +2,9 @@ package presentation;
 
 import java.io.IOException;
 
+import dataAccess.AmigoRepository;
 import dataAccess.UsuarioRepository;
+import domainModel.Amigo;
 import domainModel.Usuario;
 
 import javax.servlet.RequestDispatcher;
@@ -38,11 +40,21 @@ public class perfilController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String cod = request.getParameter("cod");
+		int cod = 0;
+		//caso não passe um cod pelo get, pegar o cod do usuario logado
+		if(request.getParameter("cod").toString() != null){
+			cod = Integer.parseInt(request.getParameter("cod").toString());
+			AmigoRepository repamigo = new AmigoRepository();
+			Amigo amigo = new Amigo();
+			amigo = repamigo.getByName(5,cod);
+			request.setAttribute("amigo", amigo);
+		}else{
+			//para acessar o proprio perfil
+			cod = Integer.parseInt(request.getAttribute("cod_usuario").toString());
+		}
 		
-		if(cod != null){
-			try{
-				Usuario usuario = repositorio.Open(Integer.parseInt(cod));
+		try{
+				Usuario usuario = repositorio.Open(cod);
 				
 				request.setAttribute("usuario", usuario);
 			}
@@ -50,10 +62,9 @@ public class perfilController extends HttpServlet {
 				// TODO: handle exception
 				e.printStackTrace();
 			}
-			RequestDispatcher perfil = request.getRequestDispatcher("perfilUsuario.jsp");
+			RequestDispatcher perfil = request.getRequestDispatcher("perfilUsuarios.jsp");
 			perfil.forward(request, response);
 			return;
-		}
 	}
 
 	/**

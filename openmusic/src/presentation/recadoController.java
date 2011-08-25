@@ -41,14 +41,17 @@ public class recadoController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		String cod_usuario = request.getParameter("cod");
-
+		int cod_usuario = 0;
+		//caso não passe um cod pelo get, pegar o cod do usuario logado
+		if(request.getParameter("cod").toString() != null){
+			cod_usuario = Integer.parseInt(request.getParameter("cod").toString());
+		}else{
+			cod_usuario = Integer.parseInt(request.getAttribute("cod_usuario").toString());
+		}
 		try{
 
-			if(cod_usuario != null){
-
 				// Gera uma listagem de clientes
-				List<Recado> recados = repositorio.getTop10ByName(Integer.parseInt(cod_usuario));
+				List<Recado> recados = repositorio.getTop10ByName(cod_usuario);
 
 				
 				request.setAttribute("recados", recados);
@@ -57,10 +60,6 @@ public class recadoController extends HttpServlet {
 				// Chamar a pagina JSP
 				RequestDispatcher listagem = request.getRequestDispatcher("recadoUsuario.jsp");
 				listagem.forward(request, response);
-
-			}
-
-
 
 		}catch(Exception ex){
 			ex.printStackTrace();

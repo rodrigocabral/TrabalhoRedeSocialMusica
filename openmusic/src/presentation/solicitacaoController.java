@@ -50,15 +50,22 @@ public class solicitacaoController extends HttpServlet {
 		//request.setAttribute("cod_usuario", arg1)
 		
 		//pegar os parametros de codigo e solicitação passaados pela url
-		String solicitar = request.getParameter("solicitacao");
-		String cod2 = request.getParameter("cod");
+			
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		int cod2 = 0;
+		cod2 = Integer.parseInt(request.getParameter("cod_solicitacao").toString());
 		
-		if(solicitar != null)
-		if(cod2 != null){
+		if(cod2 != 0){
 			try{
 				//pegar codigo do usuario da sessão
-				String cod1 = (String) request.getAttribute("cod_usuario");
-				Solicitacao solicitacao = repositorio.getByUsuario(Integer.parseInt(cod1),Integer.parseInt(cod2));
+				int cod1 = Integer.parseInt(request.getAttribute("cod_usuario").toString());
+				Solicitacao solicitacao = repositorio.getByUsuario(cod1,cod2);
 				
 				if(solicitacao != null){
 					request.setAttribute("erro", "Você já fez uma solicitação para este usuário, aguarde a confirmação");
@@ -67,10 +74,10 @@ public class solicitacaoController extends HttpServlet {
 				}else{
 					Solicitacao s = new Solicitacao();
 					
-					Usuario u = usuariorepositorio.Open(Integer.parseInt(cod2));												
+					Usuario u = usuariorepositorio.Open(cod2);												
 					s.setIdSolicitado(u);
 					
-					u = usuariorepositorio.Open(Integer.parseInt(cod1));
+					u = usuariorepositorio.Open(cod1);
 					s.setIdSolicitador(u);
 					
 					repositorio.Save(s);
@@ -88,15 +95,7 @@ public class solicitacaoController extends HttpServlet {
 			RequestDispatcher perfil = request.getRequestDispatcher("perfilUsuario.jsp");
 			perfil.forward(request, response);
 			return;
-		}	
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-
+		}
 	}
 
 }

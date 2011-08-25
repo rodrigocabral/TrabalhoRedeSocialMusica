@@ -1,6 +1,7 @@
 package dataAccess;
 
 import domainModel.Amigo;
+import domainModel.Usuario;
 
 import java.util.List;
 
@@ -55,10 +56,27 @@ public class AmigoRepository {
 	}
 	
 	public List getTop10ByName(int cod){
+		try{
 		return manager.createQuery("select a from Amigo a join a.idamigo1 u join a.idamigo2 us where u.id =:id or us.id =:id2")
 		.setParameter("id", cod)
 		.setParameter("id2", cod)
 		.setMaxResults(10).getResultList();
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
+		return null;
+	}
+	
+	public Amigo getByName(int cod1, int cod2) {
+		try{
+		return (Amigo) manager.createQuery("select a from Amigo a join a.idamigo1 u join a.idamigo2 us where (u.id =:id and us.id =:id2) or (u.id =:id2 and us.id =:id)")
+		.setParameter("id", cod1)
+		.setParameter("id2", cod2)
+		.getSingleResult();	
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
+		return null;
 	}
 
 }

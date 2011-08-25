@@ -50,12 +50,9 @@ public class loginController extends HttpServlet {
 			Usuario user = repo.OpenByLogin(usuario);
 
 			if(user == null){
-				
-				
-				request.setAttribute("erro", "Senha/Login não conferem.");
-				request.getRequestDispatcher("login.jsp");
-				
-				
+				request.setAttribute("erro", "Login inexistente!");
+				request.getRequestDispatcher("login.jsp").forward(request, response);
+				return;
 			}
 			else {
 				if(user.getSenha().equals(senha)){
@@ -68,7 +65,7 @@ public class loginController extends HttpServlet {
 					return;
 				}
 				else {
-					request.setAttribute("erro", "A senha não confere");
+					request.setAttribute("erro", "A senha não confere!");
 					request.getRequestDispatcher("login.jsp").forward(request, response);
 					return;
 				}

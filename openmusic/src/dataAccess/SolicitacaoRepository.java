@@ -60,7 +60,7 @@ public class SolicitacaoRepository {
 	}
 	
 	public Solicitacao getByUsuario(int cod1, int cod2){
-		return (Solicitacao)maneger.createQuery("select s from Solicitacao s join idsolicitado u join idsolicitador us where u.id = :id1 and us.id =:id2")
+		return (Solicitacao)maneger.createQuery("select s from Solicitacao s join idsolicitado u join idsolicitador us where u.id =:id1 and us.id =:id2")
 		.setParameter("id1", cod1)
 		.setParameter("id2", cod2)
 		.getSingleResult();

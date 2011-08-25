@@ -6,6 +6,9 @@ import java.util.Date;
 
 import javax.persistence.*;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 @Entity
 @Table(name="usuarios")
 public class Usuario {
@@ -105,14 +108,16 @@ public class Usuario {
 
 	public void setDatanascimento(String datanasc) throws Exception{
 		try{
-		DateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
-		formatter.setLenient (false); 
-		this.datanascimento = (java.util.Date)formatter.parse(datanasc);
-		System.out.println(this.datanascimento);
-		}
-		catch(Exception ex){
-			throw ex;
-		}
+	           Pattern expressao = Pattern.compile("^(([0-2]\\d)|3[01])\\/(0[1-9]|1[0-2])\\/\\d{4}");
+	           Matcher martch = expressao.matcher(datanasc);
+	           if(martch.matches()){
+	               SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+	               java.util.Date dataUtil = df.parse(datanasc);
+	               this.datanascimento = dataUtil;
+	           }
+	      }catch(Exception e){
+	         e.getMessage();
+	      }
 	}
 
 	

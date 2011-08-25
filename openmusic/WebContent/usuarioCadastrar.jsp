@@ -1,75 +1,135 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
-<%@page import="java.util.Iterator"%>
-<%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    
-<%@ page import="domainModel.Usuario" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Cadastro do Usuário</title>
-</head>
-<body>
+<%@ include file="header_login.jsp" %>
+<style type="text/css" >
+   * { font-family: Verdana; font-size: 96%; }
+label { display: block; margin-top: 10px; }
+label.error { float: none; color: red; margin: 0 .5em 0 0; vertical-align: top; font-size: 10px }
+p { clear: both; }
+.submit { margin-top: 1em; }
+em { font-weight: bold; padding-right: 1em; vertical-align: top; }
+</style>
 
+<script src="js/jquery.js" type="text/javascript"></script>
+ <script src="js/jquery.validate.js" type="text/javascript"></script>
+<script src="js/jquery.maskedinput.js" type="text/javascript"></script>
 
-    <form method="post" action="/openmusic/Usuarios" name="form1" >
+<script type="text/javascript">
 
-	<input type="text" name="busca"  />
+  $(document).ready( function() {
+	$("#data_nascimento").mask("99/99/9999");
+	$("#formulario").validate({
+		// Define as regras
+		rules:{
+			nome:{
+				// campoNome será obrigatório (required) e terá tamanho mínimo (minLength)
+				required: true, minlength: 2
+			},
+			sobrenome:{
+				// campoNome será obrigatório (required) e terá tamanho mínimo (minLength)
+				required: true, minlength: 2
+			},
+			senha:{
+				// campoNome será obrigatório (required) e terá tamanho mínimo (minLength)
+				required: true, minlength: 6
+			},
+			confirma_senha:{
+				// campoNome será obrigatório (required) e terá tamanho mínimo (minLength)
+				required: true, minlength: 2
+			},
+			email:{
+				// campoEmail será obrigatório (required) e precisará ser um e-mail válido (email)
+				required: true, email: true
+			},
+			data_nascimento:{
+				// campoMensagem será obrigatório (required) e terá tamanho mínimo (minLength)
+				required: true
+			},
+			cidade:{
+				// campoNome será obrigatório (required) e terá tamanho mínimo (minLength)
+				required: true, minlength: 2
+			},
+			pais:{
+				// campoNome será obrigatório (required) e terá tamanho mínimo (minLength)
+				required: true, minlength: 2
+			}
+		},
+		// Define as mensagens de erro para cada regra
+		messages:{
+			nome:{
+				required: "Digite o seu nome",
+				minlength: "O seu nome deve conter, no mínimo, 2 caracteres"
+			},
+			sobrenome:{
+				required: "Digite o seu sobrenome",
+				minlength: "O seu sobrenome deve conter, no mínimo, 2 caracteres"
+			},
+			email:{
+				required: "Digite o seu e-mail",
+				email: "Digite um e-mail válido"
+			},
+			senha:{
+				required: "Digite a sua senha",
+				minlength: "A senha deve conter, no mínimo, 6 caracteres"
+			},
+			confirma_senha:{
+				required: "Digite a confirmação da senha",
+				minlength: "A confirmação de senha deve ter, no mínimo, 6 caracteres"
+			},
+			data_nascimento:{
+				required: "Digite a sua data de nascimento"
+			},
+			cidade:{
+				required: "Digite a sua cidade",
+				minlength: "O nome da sua cidade deve conter, no mínimo, 2 caracteres"
+			},
+			pais:{
+				required: "Digite o seu pais",
+				minlength: "O nome do seu país deve conter, no mínimo, 2 caracteres"
+			}
+		}
+	});
+});
+  </script>
+<div id="geral_conteudo">
+<span id="titulo_pagina">
+<div class="sombra11">Cadastre-se em nossa rede
+    <div class="texto1">Cadastre-se em nossa rede
+    </div></div></span><br />
 
-	<input type="submit" value="buscar" />
-
-</form>
-
-
-
-<%
-	List usuarios = (List) request.getAttribute("usuarios");
-    if(usuarios!= null) {
-	   %>
-	   <table>
-	   <tr><td>ID</td><td>Nome</td></tr>
-	   <%
-		   Iterator it = usuarios.iterator();
-		   while(it.hasNext()){
-			   Usuario u = (Usuario)it.next();
-		   %>
-		   <tr>
-		   		<td><%=u.getId() %></td>
-		   		<td><%=u.getNome() %></td>
-		   </tr>
-		 <%
-	   }
-	   %>
-	   </table>
-	<%
-	}else
-		out.println("<h1>Sem usuários</h1>");
-    %>
-
-
-
-<br /><br />
-
-
-<%
-Usuario usuario = (Usuario)request.getAttribute("Usuario");
-%>
-<form action="/openmusic/Usuarios" method="post" >
+<form action="/openmusic/Usuarios" method="post" id="formulario" >
 		<table>
-			<tr><td>Nome: </td><td><input type="text" name="nome" value="<% if(usuario != null) { out.print(usuario.getNome()); } %>" /></td></tr>
-			<tr><td>Sobrenome: </td><td><input type="text" name="sobrenome" value="<% if(usuario != null) { out.print(usuario.getSobrenome()); } %>" /></td></tr>
-			<tr><td>Email: </td><td><input type="text" name="email" value="<% if(usuario != null) { out.print(usuario.getEmail()); } %>" /></td></tr>
-			<tr><td>Senha: </td><td><input type="password" name="senha" value="<% if(usuario != null) { out.print(usuario.getSenha()); } %>" /></td></tr>
-			<tr><td>Confirme Senha: </td><td><input type="password" name="confirma_senha" value="<% if(usuario != null) { out.print(usuario.getSenha()); } %>" /></td></tr>
-			<tr><td>Sexo: </td><td><input type="text" name="sexo" value="<% if(usuario != null) { out.print(usuario.getSexo()); } %>" /></td></tr>
-			<tr><td>Data Nascimento: </td><td><input type="text" name="data_nascimento" value="<% if(usuario != null) { out.print(usuario.getDatanascimento()); } %>" /></td></tr>
-			<tr><td>Cidade: </td><td><input type="text" name="cidade" value="<% if(usuario != null) { out.print(usuario.getCidade()); } %>" /></td></tr>
-			<tr><td>Estado: </td>
+			<tr>
+			<td id="titulo_input">Nome: </td>
+			<td><input class="fakeupload" type="text" name="nome" value="" /></td></tr>
+			<tr>
+			<td id="titulo_input">Sobrenome: </td>
+			<td><input class="fakeupload" type="text" name="sobrenome" value="" /></td></tr>
+			<tr>
+			<td id="titulo_input">Email: </td>
+			<td><input class="fakeupload" type="text" name="email" value="" /></td></tr>
+			<tr>
+			<td id="titulo_input">Senha: </td>
+			<td><input class="fakeupload" type="password" name="senha" value="" /></td></tr>
+			<tr>
+			<td id="titulo_input">Confirme Senha: </td>
+			<td><input class="fakeupload" type="password" name="confirma_senha" value="" /></td></tr>
+			<tr>
+			<td id="titulo_input">Sexo: </td>
 			<td>
-			<select name="estado" id="estado">
-          	<option><% if(usuario != null) { out.print(usuario.getEstado()); } %></option>
+			<select class="fakeupload" name="sexo" id="sexo">
+            <option>Masculino</option>
+            <option>Feminino</option>
+            </select>
+			</td></tr>
+			<tr>
+			<td id="titulo_input">Data Nascimento: </td>
+			<td><input class="fakeupload" type="text" name="data_nascimento" value="" id="data_nascimento" /></td></tr>
+			<tr>
+			<td id="titulo_input">Cidade: </td>
+			<td><input class="fakeupload" type="text" name="cidade" value="" /></td></tr>
+			<tr>
+			<td id="titulo_input">Estado: </td>
+			<td>
+			<select class="fakeupload" name="estado" id="estado">
             <option>MG</option>
             <option>AL</option>
             <option>AM</option>
@@ -99,9 +159,12 @@ Usuario usuario = (Usuario)request.getAttribute("Usuario");
             <option>TO</option>
           </select>
 			</td></tr>
-			<tr><td>Pais: </td><td><input type="text" name="pais" value="<% if(usuario != null) { out.print(usuario.getPais()); } %>" /></td></tr>
+			<tr>
+			<td id="titulo_input">Pais: </td>
+			<td><input class="fakeupload" type="text" name="pais" value="" /></td>
+			</tr>
 		</table>
-		<input type="submit" value="Salvar" />
+		<input id="efetuar" type="submit" value="Salvar" />
 	</form>
 
 </body>

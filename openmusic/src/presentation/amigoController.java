@@ -50,24 +50,24 @@ public class amigoController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String reposta = request.getParameter("resp");
-		String cod_usuario = (String) request.getAttribute("cod_usuario");
-		String cod_amigo = request.getParameter("cods");
+		int cod_usuario = Integer.parseInt(request.getAttribute("cod_usuario").toString());
+		int cod_amigo = Integer.parseInt(request.getParameter("cod"));
 
 		try{
 			if(reposta.equals("s")){
-				//salvar na tabela amigos e excluir de  solicitaï¿½
-				Solicitacao s = solicitacaorepositorio.getByUsuario(Integer.parseInt(cod_amigo),Integer.parseInt(cod_usuario));
+				//salvar na tabela amigos e excluir de  solicitação
+				Solicitacao s = solicitacaorepositorio.getByUsuario(cod_usuario,cod_amigo);
 
 				Amigo a = new Amigo();
-				a.setIdAmigo1(s.getIdSolicitador());
-				a.setIdAmigo2(s.getIdSolicitado());
+				a.setIdAmigo1(s.getIdSolicitado());
+				a.setIdAmigo2(s.getIdSolicitador());
 				repositorio.Save(a);
 				solicitacaorepositorio.Delete(s);
 				request.getRequestDispatcher("home.jsp").forward(request, response);
 				return;
 			}else{
-				//excluir de  solicitaï¿½
-				Solicitacao s = solicitacaorepositorio.getByUsuario(Integer.parseInt(cod_amigo),Integer.parseInt(cod_usuario));
+				//excluir de  solicitação
+				Solicitacao s = solicitacaorepositorio.getByUsuario(cod_usuario,cod_amigo);
 				solicitacaorepositorio.Delete(s);
 				request.getRequestDispatcher("home.jsp").forward(request, response);
 				return;

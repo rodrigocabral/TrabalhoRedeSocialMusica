@@ -19,14 +19,16 @@
 </head>
 <body>
 <div id="menu">
+<div style="margin: auto; width: 1200px;">
 <div class="item_menu">home </div> 
 <div class="item_menu">gravações</div>
 <div class="item_menu"> recados </div>
   <form method="post" action="/openmusic/Usuarios" name="form1" >
-	<input type="text" name="busca"  />
-	<input type="submit" value="buscar" />
+	Busca:
+	<input type="text" class="fakeupload" name="busca"  />
+	<input type="submit" id="efetuar" value="buscar" />
 </form>
-
+</div>
 </div>
 <div id="geral_topo">
 	<div id="conteudo_topo">

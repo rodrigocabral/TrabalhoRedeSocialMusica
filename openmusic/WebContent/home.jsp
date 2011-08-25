@@ -22,8 +22,9 @@ if(s != null){
 	for(Solicitacao so : s){
 		out.println(so.getIdSolicitador().getNome());
 			%> solicitou sua amizade, confirma o pedido?<br />
-			<a href="openmusic/Amigo?resp=s">sim</a> |
-			<a href="openmusic/Amigo?resp=n">não</a>
+			<a href="Amigo?resp=s&cod=<%=so.getIdSolicitador().getId() %>">sim</a> |
+			<a href="Amigo?resp=n&cod=<%=so.getIdSolicitador().getId() %>">não</a>
+			<br />
 			<%
 	}
 }
@@ -43,7 +44,7 @@ List<Amigo> amigo = amigorepositorio.getTop10ByName(cod);
 if(amigo != null){
 for(Amigo a : amigo){
 	if(a.getIdAmigo1().getId() != cod){
-		System.out.println(a.getIdAmigo1().getNome());
+		out.println(a.getIdAmigo1().getNome());
 	}else{
 		out.println(a.getIdAmigo2().getNome());
 	}

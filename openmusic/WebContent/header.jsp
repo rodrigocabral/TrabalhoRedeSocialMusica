@@ -25,7 +25,7 @@
 <div class="item_menu"> recados </div>
   <form method="post" action="/openmusic/Usuarios" name="form1" >
 	Busca:
-	<input type="text" class="fakeupload" name="busca"  />
+	<input type="text" class="fakeupload" name="busca" x-webkit-speech  />
 	<input type="submit" id="efetuar" value="buscar" />
 </form>
 </div>

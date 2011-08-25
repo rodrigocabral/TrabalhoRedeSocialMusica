@@ -10,7 +10,7 @@
 </div></span><br />
 
 <%
-if(request.getAttribute("amigo") == null){
+if(request.getAttribute("amigo") == null && request.getParameter("cod") != null){
 %>
 <form action="/openmusic/Solicitacao">
 <!-- atributo retorna confirmação de solicitação ou erro caso já tenha feito solicitação para este usuário -->

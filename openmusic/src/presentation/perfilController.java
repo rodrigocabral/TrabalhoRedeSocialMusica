@@ -42,7 +42,7 @@ public class perfilController extends HttpServlet {
 		// TODO Auto-generated method stub
 		int cod = 0;
 		//caso não passe um cod pelo get, pegar o cod do usuario logado
-		if(request.getParameter("cod").toString() != null){
+		if(request.getParameter("cod") != null){
 			cod = Integer.parseInt(request.getParameter("cod").toString());
 			AmigoRepository repamigo = new AmigoRepository();
 			Amigo amigo = new Amigo();

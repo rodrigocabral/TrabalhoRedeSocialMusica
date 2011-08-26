@@ -1,6 +1,6 @@
 <%@ include file="header_login.jsp" %> 
 
-
+<% session.removeAttribute("cod_usuario"); %>
 
 <div id="geral_conteudo">
 <span id="titulo_pagina">

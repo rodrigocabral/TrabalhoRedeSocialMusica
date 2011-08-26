@@ -11,7 +11,10 @@ AmigoRepository amigorepositorio = new AmigoRepository();
 UsuarioRepository usuarioRepository =  new UsuarioRepository();
 
 //pegar o login da sessão
-int cod = Integer.parseInt(request.getAttribute("cod_usuario").toString());
+//int cod = Integer.parseInt(request.getAttribute("cod_usuario").toString());
+int cod;
+session = request.getSession();
+cod = Integer.parseInt(session.getAttribute("cod_usuario").toString());
 
 
 //realizar seleção conforme id do usuario logado

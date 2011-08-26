@@ -46,30 +46,19 @@ public class solicitacaoController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		//criar sessão
-		//request.setAttribute("cod_usuario", arg1)
-		
-		//pegar os parametros de codigo e solicitação passaados pela url
-			
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		int cod2 = 0;
-		cod2 = Integer.parseInt(request.getParameter("cod_solicitacao").toString());
-		
-		if(cod2 != 0){
+		if(request.getParameter("cod_solicitacao") != null){
 			try{
+				int cod2 = Integer.parseInt(request.getParameter("cod_solicitacao").toString());
 				//pegar codigo do usuario da sessão
-				int cod1 = Integer.parseInt(request.getAttribute("cod_usuario").toString());
+				//int cod1 = Integer.parseInt(request.getAttribute("cod_usuario").toString());
+				HttpSession session = request.getSession();
+				int cod1 = Integer.parseInt(session.getAttribute("cod_usuario").toString());
 				Solicitacao solicitacao = repositorio.getByUsuario(cod1,cod2);
 				
 				if(solicitacao != null){
-					request.setAttribute("erro", "Você já fez uma solicitação para este usuário, aguarde a confirmação");
-					request.getRequestDispatcher("perfilUsuario.jsp").forward(request, response);
+					request.setAttribute("erro", "já existe uma solicitação para este usuário!");
+					RequestDispatcher perfil = request.getRequestDispatcher("perfilUsuarios.jsp");
+					perfil.forward(request, response);
 					return;
 				}else{
 					Solicitacao s = new Solicitacao();
@@ -83,7 +72,8 @@ public class solicitacaoController extends HttpServlet {
 					repositorio.Save(s);
 					//enviar mensagem para a página perfilUsuario onde se encontra o usuário
 					request.setAttribute("confirma", "Solicitação realizada com sucesso, aguarde a confirmação");
-					request.getRequestDispatcher("perfilUsuario.jsp").forward(request, response);
+					RequestDispatcher perfil = request.getRequestDispatcher("perfilUsuarios.jsp");
+					perfil.forward(request, response);
 					return;
 				}
 				//request.setAttribute("usuario", usuario);
@@ -92,10 +82,23 @@ public class solicitacaoController extends HttpServlet {
 				// TODO: handle exception
 				e.printStackTrace();
 			}
-			RequestDispatcher perfil = request.getRequestDispatcher("perfilUsuario.jsp");
+			RequestDispatcher perfil = request.getRequestDispatcher("perfilUsuarios.jsp");
+			perfil.forward(request, response);
+			return;
+		}else{
+			RequestDispatcher perfil = request.getRequestDispatcher("perfilUsuarios.jsp");
 			perfil.forward(request, response);
 			return;
 		}
+			
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

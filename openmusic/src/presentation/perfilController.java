@@ -14,6 +14,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import domainModel.Usuario;
 
@@ -50,7 +51,9 @@ public class perfilController extends HttpServlet {
 			request.setAttribute("amigo", amigo);
 		}else{
 			//para acessar o proprio perfil
-			cod = Integer.parseInt(request.getAttribute("cod_usuario").toString());
+			//cod = Integer.parseInt(request.getAttribute("cod_usuario").toString());
+			HttpSession session = request.getSession();
+			cod = Integer.parseInt(session.getAttribute("cod_usuario").toString());
 		}
 		
 		try{

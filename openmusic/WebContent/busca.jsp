@@ -10,17 +10,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <title>Insert title here</title>
 </head>
-<body>
-  <form method="post" action="/openmusic/Usuarios" name="form1" >
-
-	<input type="text" name="busca"  />
-
-	<input type="submit" value="buscar" />
-
-</form>
-
-
-
+<%@ include file="header.jsp" %> 
+<div id="geral_conteudo">
+<span id="titulo_pagina">
+<div class="sombra11">Resultados da Busca
+    <div class="texto1">Resultados da Busca
+    </div>
+</div></span><br />
 <%
 	List usuarios = (List) request.getAttribute("usuarios");
     if(usuarios!= null) {

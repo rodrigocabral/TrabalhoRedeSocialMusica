@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dataAccess.UsuarioRepository;
 import domainModel.Usuario;
@@ -57,8 +58,10 @@ public class loginController extends HttpServlet {
 			else {
 				if(user.getSenha().equals(senha)){
 					int id = user.getId();
-					request.setAttribute("login_usuario", usuario);
-					request.setAttribute("cod_usuario", id);
+					//request.setAttribute("login_usuario", usuario);
+					//request.setAttribute("cod_usuario", id);
+					HttpSession session = request.getSession();
+					session.setAttribute("cod_usuario", Integer.toString(id));
 					//System.out.print(id);
 					request.setAttribute("nome", user.getNome());
 					request.getRequestDispatcher("home.jsp").forward(request, response);

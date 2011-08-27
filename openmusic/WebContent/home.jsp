@@ -37,13 +37,13 @@ if(s != null){
 }
 %>
 
-<div style="float: right; border: 1px solid red; width: 250px;">
+<div style="float: right; border: 0px solid red; min-width: 250px;">
 <span id="titulo_pagina">
 <div class="sombra11">Lista de Amigos
     <div class="texto1">Lista de Amigos
     </div>
 </div></span><br />
-<div>
+<div id="lista_amigos">
 <%
 
 
@@ -55,13 +55,15 @@ for(Amigo a : amigo){
 	<%
 	if(a.getIdAmigo1().getId() != cod){
 		%>
+		<p>
 		<a href="Perfil?cod=<%=a.getIdAmigo1().getId() %>"><%=a.getIdAmigo1().getNome() %></a>
-		<br />
+		</p>
 		<%
 	}else{
 		%>
+		<p>
 		<a href="Perfil?cod=<%=a.getIdAmigo2().getId() %>"><%=a.getIdAmigo2().getNome() %></a>
-		<br />
+		</p>
 		<%
 	}
 	%>

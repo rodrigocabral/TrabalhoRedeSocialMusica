@@ -2,6 +2,7 @@ package presentation;
 
 
 import domainModel.Recado;
+import domainModel.Usuario;
 
 
 import dataAccess.RecadoRepository;
@@ -15,6 +16,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import java.util.List;
 
 /**
@@ -43,19 +46,31 @@ public class recadoController extends HttpServlet {
 		
 		int cod_usuario = 0;
 		//caso não passe um cod pelo get, pegar o cod do usuario logado
-		if(request.getParameter("cod").toString() != null){
+		if(request.getParameter("cod") != null){
+			try{
 			cod_usuario = Integer.parseInt(request.getParameter("cod").toString());
+			UsuarioRepository repusuario = new UsuarioRepository();
+			request.setAttribute("usuario", repusuario.Open(cod_usuario));
+			}catch (Exception e) {
+				e.getStackTrace();
+			}
 		}else{
-			cod_usuario = Integer.parseInt(request.getAttribute("cod_usuario").toString());
+			try{
+			HttpSession session = request.getSession();
+			cod_usuario = Integer.parseInt(session.getAttribute("cod_usuario").toString());
+			UsuarioRepository repusuario = new UsuarioRepository();
+			request.setAttribute("usuario", repusuario.Open(cod_usuario));
+			}catch(Exception e){
+				e.getStackTrace();
+			}
 		}
 		try{
 
-				// Gera uma listagem de clientes
+				// pegar os recados do usuario em questão
 				List<Recado> recados = repositorio.getTop10ByName(cod_usuario);
 
 				
 				request.setAttribute("recados", recados);
-				request.setAttribute("cod_usuario_recado", cod_usuario);
 
 				// Chamar a pagina JSP
 				RequestDispatcher listagem = request.getRequestDispatcher("recadoUsuario.jsp");
@@ -88,20 +103,32 @@ public class recadoController extends HttpServlet {
 				
 				
 				Recado rec = new Recado();
-				
+				//usuario que vai receber o recado
 				UsuarioRepository user_repo = new UsuarioRepository();
-				String cod_usuario_recado = request.getParameter("cod_usuario_recado");
+				int cod_usuario_recado = Integer.parseInt(request.getParameter("cod_usuario_recado").toString());
 				
-				rec.setIdusuario(user_repo.Open(Integer.parseInt(cod_usuario_recado)));
+				rec.setIdusuario(user_repo.Open(cod_usuario_recado));
 				
+				//texto do recado
 				rec.setRecado(recado);
 				
-				String cod_usuario = (String)request.getAttribute("cod_usuario");
+				//usuario que está enviando o recado
+				HttpSession session = request.getSession();
+				int cod_usuario = Integer.parseInt(session.getAttribute("cod_usuario").toString());
 				
-				rec.setIdamigo(user_repo.Open(Integer.parseInt(cod_usuario)));
+				rec.setIdamigo(user_repo.Open(cod_usuario));
 				
 				
 				repositorio.Save(rec);
+				
+				UsuarioRepository repusuario = new UsuarioRepository();
+				request.setAttribute("usuario", repusuario.Open(cod_usuario_recado));
+				
+				// pegar os recados do usuario em questão
+				List<Recado> recados = repositorio.getTop10ByName(cod_usuario_recado);
+
+				
+				request.setAttribute("recados", recados);
 				request.getRequestDispatcher("recadoUsuario.jsp").forward(request, response);
 				return;
 				

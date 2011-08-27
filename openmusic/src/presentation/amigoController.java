@@ -19,6 +19,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import java.util.List;
 
 /**
@@ -50,13 +52,14 @@ public class amigoController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String reposta = request.getParameter("resp");
-		int cod_usuario = Integer.parseInt(request.getAttribute("cod_usuario").toString());
+		HttpSession session = request.getSession();
+		int cod = Integer.parseInt(session.getAttribute("cod_usuario").toString());
 		int cod_amigo = Integer.parseInt(request.getParameter("cod"));
 
 		try{
 			if(reposta.equals("s")){
 				//salvar na tabela amigos e excluir de  solicitação
-				Solicitacao s = solicitacaorepositorio.getByUsuario(cod_usuario,cod_amigo);
+				Solicitacao s = solicitacaorepositorio.getByUsuario(cod,cod_amigo);
 
 				Amigo a = new Amigo();
 				a.setIdAmigo1(s.getIdSolicitado());
@@ -67,7 +70,7 @@ public class amigoController extends HttpServlet {
 				return;
 			}else{
 				//excluir de  solicitação
-				Solicitacao s = solicitacaorepositorio.getByUsuario(cod_usuario,cod_amigo);
+				Solicitacao s = solicitacaorepositorio.getByUsuario(cod,cod_amigo);
 				solicitacaorepositorio.Delete(s);
 				request.getRequestDispatcher("home.jsp").forward(request, response);
 				return;

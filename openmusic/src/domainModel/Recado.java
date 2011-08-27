@@ -22,6 +22,9 @@ public class Recado {
 	@JoinColumn(name="idamigo")
 	private Usuario idamigo;
 	
+	@Column
+	private String recado;
+	
 	public Usuario getIdusuario() {
 		return idusuario;
 	}
@@ -38,8 +41,6 @@ public class Recado {
 		this.idamigo = idamigo;
 	}
 
-	@Column
-	private String recado;
 
 	public int getId() {
 		return id;

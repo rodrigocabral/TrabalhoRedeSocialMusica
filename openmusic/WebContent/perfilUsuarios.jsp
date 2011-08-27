@@ -8,25 +8,24 @@
     <div class="texto1">Perfil de <%=usuario.getNome() %>
     </div>
 </div></span><br />
-
+<div id="lista_amigos">
+<a href="Recado?cod=<%=usuario.getId() %>">Recados</a>
+</div>
 <%
 if(request.getAttribute("amigo") == null && request.getParameter("cod") != null){
-%>
-<form action="/openmusic/Solicitacao">
+	if(request.getAttribute("confirma") != null)
+		out.println(request.getAttribute("confirma"));
+	if(request.getAttribute("erro") != null)
+		out.println(request.getAttribute("erro")); 
+	%>
+<form type="post" action="Solicitacao" name="form1">
 <!-- atributo retorna confirmação de solicitação ou erro caso já tenha feito solicitação para este usuário -->
-<%
-if(request.getAttribute("confirma") != null)
-	out.println(request.getAttribute("confirma"));
-if(request.getAttribute("erro") != null)
-	out.println(request.getAttribute("erro")); 
-%>
 <input type="hidden" value="<%=usuario.getId() %>" name="cod_solicitacao">
 <input id="efetuar" type="submit" value="Adicionar aos Amigos"/>
 
 </form>
 <%} %>
 
-<a href="/openmusic/Recado?recado=new&cod=<%=usuario.getId() %>">Recados</a>
 
 </body>
 </html> 

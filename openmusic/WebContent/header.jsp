@@ -20,9 +20,9 @@
 <body>
 <div id="menu">
 <div style="margin: auto; width: 1200px;">
-<div class="item_menu">home </div> 
-<div class="item_menu">gravações</div>
-<div class="item_menu"> recados </div>
+<div class="item_menu"><a href="home.jsp">home</a></div> 
+<div class="item_menu"><a href="Perfil">perfil</a></div>
+<div class="item_menu"><a href="Recado">recados</a></div>
   <form method="post" action="/openmusic/Usuarios" name="form1" >
 	Busca:
 	<input type="text" class="fakeupload" name="busca" x-webkit-speech  />

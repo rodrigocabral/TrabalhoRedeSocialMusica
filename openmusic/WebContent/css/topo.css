@@ -4,6 +4,22 @@
 body{
 	margin: 0 auto;
 }
+a:link,a:visited{
+	text-decoration: none;
+	color : #ffffff;
+}
+a:hover{
+	color: black;	
+}
+
+#lista_amigos a:link,#lista_amigos a:visited{
+	text-decoration: none;
+	color : gray;
+}
+#lista_amigos a:hover{
+	color: black;	
+}
+
 #menu{
 	background:url(../imagens/fundo_menu.png);
 	width:100%;

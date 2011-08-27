@@ -42,17 +42,19 @@ public class perfilController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		int cod = 0;
+		HttpSession session = request.getSession();
 		//caso não passe um cod pelo get, pegar o cod do usuario logado
 		if(request.getParameter("cod") != null){
 			cod = Integer.parseInt(request.getParameter("cod").toString());
+			
+			//verificar se existe amizade para apresentar ou não opção de solicitação de amizade
 			AmigoRepository repamigo = new AmigoRepository();
 			Amigo amigo = new Amigo();
-			amigo = repamigo.getByName(5,cod);
+			amigo = repamigo.getByName(Integer.parseInt(session.getAttribute("cod_usuario").toString()),cod);
 			request.setAttribute("amigo", amigo);
 		}else{
 			//para acessar o proprio perfil
 			//cod = Integer.parseInt(request.getAttribute("cod_usuario").toString());
-			HttpSession session = request.getSession();
 			cod = Integer.parseInt(session.getAttribute("cod_usuario").toString());
 		}
 		

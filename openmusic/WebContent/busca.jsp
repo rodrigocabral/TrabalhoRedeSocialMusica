@@ -30,7 +30,7 @@
 		   %>
 		   <tr>
 		   		<td><%=u.getId() %></td>
-		   		<td><a href="/openmusic/Perfil?cod=<%=u.getId() %>"><%=u.getNome() %></a></td>
+		   		<td><div id="lista_amigos"><a href="/openmusic/Perfil?cod=<%=u.getId() %>"><%=u.getNome() %></a></div></td>
 		   </tr>
 		 <%
 	   }

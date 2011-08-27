@@ -63,7 +63,7 @@ public class loginController extends HttpServlet {
 					HttpSession session = request.getSession();
 					session.setAttribute("cod_usuario", Integer.toString(id));
 					//System.out.print(id);
-					request.setAttribute("nome", user.getNome());
+					//request.setAttribute("nome", user.getNome());
 					request.getRequestDispatcher("home.jsp").forward(request, response);
 					return;
 				}

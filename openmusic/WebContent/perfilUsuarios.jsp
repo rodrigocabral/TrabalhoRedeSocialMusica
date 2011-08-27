@@ -12,13 +12,13 @@
 <a href="Recado?cod=<%=usuario.getId() %>">Recados</a>
 </div>
 <%
-if(request.getAttribute("amigo") == null && request.getParameter("cod") != null){
+if(request.getAttribute("amigo") == null && usuario.getId() != Integer.parseInt(session.getAttribute("cod_usuario").toString())){
 	if(request.getAttribute("confirma") != null)
 		out.println(request.getAttribute("confirma"));
 	if(request.getAttribute("erro") != null)
 		out.println(request.getAttribute("erro")); 
 	%>
-<form type="post" action="Solicitacao" name="form1">
+<form method="post" action="Solicitacao" name="form1">
 <!-- atributo retorna confirmação de solicitação ou erro caso já tenha feito solicitação para este usuário -->
 <input type="hidden" value="<%=usuario.getId() %>" name="cod_solicitacao">
 <input id="efetuar" type="submit" value="Adicionar aos Amigos"/>

@@ -25,11 +25,13 @@ if(s != null){
 	for(Solicitacao so : s){
 		%>
 		<div id="titulo_input">
+		<div id="lista_amigos">
 		<%
 		out.println(so.getIdSolicitador().getNome());
 			%> solicitou sua amizade, confirma o pedido?<br />
 			<a href="Amigo?resp=s&cod=<%=so.getIdSolicitador().getId() %>">sim</a> |
 			<a href="Amigo?resp=n&cod=<%=so.getIdSolicitador().getId() %>">não</a>
+			</div>
 			</div>
 			<br />
 			<%

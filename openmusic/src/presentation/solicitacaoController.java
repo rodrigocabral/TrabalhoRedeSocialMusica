@@ -1,10 +1,12 @@
 package presentation;
 
 
+import domainModel.Amigo;
 import domainModel.Solicitacao;
 import domainModel.Usuario;
 
 
+import dataAccess.AmigoRepository;
 import dataAccess.SolicitacaoRepository;
 import dataAccess.UsuarioRepository;
 
@@ -66,6 +68,13 @@ public class solicitacaoController extends HttpServlet {
 				
 				if(solicitacao != null){
 					request.setAttribute("erro", "já existe uma solicitação para este usuário!");
+					
+					AmigoRepository repamigo = new AmigoRepository();
+					Amigo amigo = new Amigo();
+					amigo = repamigo.getByName(Integer.parseInt(session.getAttribute("cod_usuario").toString()),cod2);
+					request.setAttribute("amigo", amigo);
+					
+					request.setAttribute("usuario", usuariorepositorio.Open(cod2));
 					request.getRequestDispatcher("perfilUsuarios.jsp").forward(request, response);
 					return;
 				}else{
@@ -79,6 +88,12 @@ public class solicitacaoController extends HttpServlet {
 					
 					repositorio.Save(s);
 					//enviar mensagem para a página perfilUsuario onde se encontra o usuário
+					AmigoRepository repamigo = new AmigoRepository();
+					Amigo amigo = new Amigo();
+					amigo = repamigo.getByName(Integer.parseInt(session.getAttribute("cod_usuario").toString()),cod2);
+					request.setAttribute("amigo", amigo);
+					
+					request.setAttribute("usuario", usuariorepositorio.Open(cod2));
 					request.setAttribute("confirma", "Solicitação realizada com sucesso, aguarde a confirmação");
 					request.getRequestDispatcher("perfilUsuarios.jsp").forward(request, response);
 					return;

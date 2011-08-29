@@ -1,8 +1,5 @@
 package domainModel;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.persistence.*;
 
@@ -12,14 +9,14 @@ public class Amigo {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@OneToMany
 	@Column
 	private int id;
 	
-	
+	@ManyToOne
 	@JoinColumn(name="idamigo1")
 	private Usuario idamigo1;
 	
+	@ManyToOne
 	@JoinColumn(name="idamigo2")
 	private Usuario idamigo2;
 

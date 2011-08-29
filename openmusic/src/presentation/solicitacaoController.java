@@ -57,12 +57,12 @@ public class solicitacaoController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		int cod2 = Integer.parseInt(request.getParameter("cod_solicitacao").toString());
+		HttpSession session = request.getSession();
 		if(request.getParameter("cod_solicitacao") != null){
 			try{
-				int cod2 = Integer.parseInt(request.getParameter("cod_solicitacao").toString());
 				//pegar codigo do usuario da sessão
 				//int cod1 = Integer.parseInt(request.getAttribute("cod_usuario").toString());
-				HttpSession session = request.getSession();
 				int cod1 = Integer.parseInt(session.getAttribute("cod_usuario").toString());
 				Solicitacao solicitacao = repositorio.getByUsuario(cod1,cod2);
 				
@@ -104,9 +104,27 @@ public class solicitacaoController extends HttpServlet {
 				// TODO: handle exception
 				e.printStackTrace();
 			}
+			AmigoRepository repamigo = new AmigoRepository();
+			Amigo amigo = new Amigo();
+			amigo = repamigo.getByName(Integer.parseInt(session.getAttribute("cod_usuario").toString()),cod2);
+			request.setAttribute("amigo", amigo);
+			try{
+			request.setAttribute("usuario", usuariorepositorio.Open(cod2));
+			}catch (Exception e) {
+				e.getStackTrace();
+			}
 			request.getRequestDispatcher("perfilUsuarios.jsp").forward(request, response);
 			return;
 		}else{
+			AmigoRepository repamigo = new AmigoRepository();
+			Amigo amigo = new Amigo();
+			amigo = repamigo.getByName(Integer.parseInt(session.getAttribute("cod_usuario").toString()),cod2);
+			request.setAttribute("amigo", amigo);
+			try{
+			request.setAttribute("usuario", usuariorepositorio.Open(cod2));
+			}catch (Exception e) {
+				e.getStackTrace();
+			}
 			request.getRequestDispatcher("perfilUsuarios.jsp").forward(request, response);
 			return;
 		}

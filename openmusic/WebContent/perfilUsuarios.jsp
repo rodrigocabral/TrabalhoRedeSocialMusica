@@ -1,5 +1,7 @@
 <%@ include file="header.jsp" %>
 <%
+
+	AmigoRepository amigorepositorio = new AmigoRepository();
 	Usuario usuario = (Usuario)request.getAttribute("usuario");
 %> 
 <div id="geral_conteudo">
@@ -26,6 +28,43 @@ if(request.getAttribute("amigo") == null && usuario.getId() != Integer.parseInt(
 </form>
 <%} %>
 
+<div style="float: right; border: 0px solid red; min-width: 250px;">
+<span id="titulo_pagina">
+<div class="sombra11">Lista de Amigos
+    <div class="texto1">Lista de Amigos
+    </div>
+</div></span><br />
+<div id="lista_amigos">
+<%
+
+
+List<Amigo> amigo = amigorepositorio.getTop10ByName(usuario.getId());
+if(amigo != null){
+for(Amigo a : amigo){
+	%>
+	<div id="titulo_input">
+	<%
+	if(a.getIdAmigo1().getId() != usuario.getId()){
+		%>
+		<p>
+		<a href="Perfil?cod=<%=a.getIdAmigo1().getId() %>"><%=a.getIdAmigo1().getNome() %></a>
+		</p>
+		<%
+	}else{
+		%>
+		<p>
+		<a href="Perfil?cod=<%=a.getIdAmigo2().getId() %>"><%=a.getIdAmigo2().getNome() %></a>
+		</p>
+		<%
+	}
+	%>
+	</div>
+	<%
+}
+}
+%>
+</div>
+</div>
 
 </body>
 </html> 

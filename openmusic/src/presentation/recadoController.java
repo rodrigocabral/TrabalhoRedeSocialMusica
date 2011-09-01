@@ -45,6 +45,14 @@ public class recadoController extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		int cod_usuario = 0;
+		if(request.getParameter("rec") != null){
+			try{
+			Recado obj = repositorio.Open(Integer.parseInt(request.getParameter("rec").toString()));
+			repositorio.Delete(obj);
+			}catch(Exception e){
+				e.getStackTrace();
+			}
+		}
 		//caso não passe um cod pelo get, pegar o cod do usuario logado
 		if(request.getParameter("cod") != null){
 			try{

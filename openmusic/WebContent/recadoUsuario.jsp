@@ -37,12 +37,27 @@ if(request.getAttribute("erro") != null){
 			   Recado u = (Recado)it.next();
 		   %>
 		   <tr>
-		   <td><%=u.getIdamigo().getNome() %> disse: </td>
+		   <td>
+		   <div id="lista_amigos">
+		   <a style="color: black;" href="Perfil?cod=<%=u.getIdamigo().getId() %>"><%=u.getIdamigo().getNome() %></a> disse:
+		   </div> 
+		   </td>
 		   <td></td>
 		   </tr>
 		   <tr>
 		   		<td></td>
 		   		<td align="left"><%=u.getRecado() %></td>
+		   		<% if(u.getIdamigo().getId() == Integer.parseInt(session.getAttribute("cod_usuario").toString()) 
+		   				|| 
+		   				u.getIdusuario().getId() == Integer.parseInt(session.getAttribute("cod_usuario").toString())){ %>
+		   		<td>
+		   		<div id="titulo_input">
+		   		<div id="lista_amigos">
+		   		<a href="Recado?cod=<%=usuario.getId() %>&rec=<%=u.getId() %>">Apagar</a>
+		   		</div>
+		   		</div>
+		   		</td>
+		   		<%} %>
 		   </tr>
 		   <tr>
 		   	<td colspan="2"><hr></td><td><hr></td>

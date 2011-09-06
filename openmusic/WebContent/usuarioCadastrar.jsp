@@ -88,15 +88,30 @@ em { font-weight: bold; padding-right: 1em; vertical-align: top; }
 		}
 	});
 });
-  </script>
+  
+</script>
+
+<script>  
+   function createURL() {  
+      var _form = document.getElementById("formulario");  
+     _form.action += "/openmusic/Usuarios?ra="+<%=request.getParameter("ra")%>+"&disciplina="+<%=request.getParameter("disciplina")%> + "&descricao=" + _form.descricao.value;  
+     alert(_form.action);  
+     _form.submit();  
+   }  
+</script>  
+
 <div id="geral_conteudo">
 <span id="titulo_pagina">
 <div class="sombra11">Cadastre-se em nossa rede
     <div class="texto1">Cadastre-se em nossa rede
     </div></div></span><br />
 
-<form action="/openmusic/Usuarios" method="post" id="formulario" >
+<form  enctype="multipart/form-data" action=""  method="post" id="formulario" >
 		<table>
+			<tr>
+			<input type="hidden" id="tipoForm" name="tipoForm" value="imagem">
+			<td id="titulo_input">Foto: </td>
+			<td><input name="foto" type="file" id="imagem" ></td></tr>
 			<tr>
 			<td id="titulo_input">Nome: </td>
 			<td><input class="fakeupload" type="text" name="nome" value="" /></td></tr>

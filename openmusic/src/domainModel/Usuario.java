@@ -46,6 +46,8 @@ public class Usuario {
 	@Column
 	private Date datanascimento;
 	
+	@Column
+	private String foto;
 
 	
 	public int getId() {
@@ -118,6 +120,14 @@ public class Usuario {
 	      }catch(Exception e){
 	         e.getMessage();
 	      }
+	}
+	
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 
 	

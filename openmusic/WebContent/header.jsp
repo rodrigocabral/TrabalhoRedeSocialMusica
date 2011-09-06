@@ -35,5 +35,6 @@
         <div id="logomarca">
         	</div>
      </div>
+     <div id="titulo_input" style="float: right; font-size: 17px; color: black;"><a href="Login">Sair</a></div>
 </div>
 

@@ -8,7 +8,6 @@
     <%@page import="java.util.Iterator"%>
     <%@ page import="domainModel.Solicitacao,domainModel.Amigo,dataAccess.UsuarioRepository,dataAccess.SolicitacaoRepository,dataAccess.AmigoRepository" %>
     
-    
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -25,7 +24,7 @@
 <div class="item_menu"><a href="Recado">recados</a></div>
   <form method="post" action="/openmusic/Usuarios" name="form1" >
 	Busca:
-	<input type="text" class="fakeupload" name="busca" x-webkit-speech  />
+	<input type="text" class="fakebusca" name="busca" x-webkit-speech  />
 	<input type="submit" id="efetuar" value="buscar" />
 </form>
 </div>
@@ -35,6 +34,6 @@
         <div id="logomarca">
         	</div>
      </div>
-     <div id="titulo_input" style="float: right; font-size: 17px; color: black;"><a href="Login">Sair</a></div>
+     <div id="lista_amigos" style="float: right; margin-right: 40px;"><a href="Usuarios?function=Edit">Meus Dados</a> |<a href="Login"> Sair</a></div>
 </div>
 

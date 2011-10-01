@@ -1,6 +1,7 @@
 package domainModel;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -42,12 +43,13 @@ public class Usuario {
 	@Column
 	private String pais;
 	
+	@Column
+	private String foto;
+	
 	@Temporal(TemporalType.DATE)
 	@Column
 	private Date datanascimento;
 	
-	@Column
-	private String foto;
 
 	
 	public int getId() {
@@ -104,8 +106,17 @@ public class Usuario {
 	}
 
 	//set get datanascimento
-	public Date getDatanascimento() {
-		return datanascimento;
+	public Date getDatanascimento(){
+		try{
+
+	           SimpleDateFormat df = new SimpleDateFormat("dd/mm/yyyy");
+	           String dataImprime = df.format(datanascimento);
+	           datanascimento = df.parse(dataImprime);
+	          return(df.parse(dataImprime));
+	      }catch(Exception e){
+	        System.out.println("Erro ao converter DATA: "+e.getMessage());
+	        return null;
+	      }
 	}
 
 	public void setDatanascimento(String datanasc) throws Exception{
@@ -120,14 +131,6 @@ public class Usuario {
 	      }catch(Exception e){
 	         e.getMessage();
 	      }
-	}
-	
-	public String getFoto() {
-		return foto;
-	}
-
-	public void setFoto(String foto) {
-		this.foto = foto;
 	}
 
 	
@@ -154,6 +157,14 @@ public class Usuario {
 
 	public String getPais() {
 		return pais;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+
+	public String getFoto() {
+		return foto;
 	}
 	
 	

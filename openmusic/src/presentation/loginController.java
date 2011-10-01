@@ -1,6 +1,10 @@
 package presentation;
 
 import java.io.IOException;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 import javax.servlet.ServletException;
 //import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -46,6 +50,16 @@ public class loginController extends HttpServlet {
 		
 			String usuario = request.getParameter("login");
 			String senha = request.getParameter("senha");
+			try  {  
+			    MessageDigest md = MessageDigest.getInstance( "MD5" );  
+			    md.update( senha.getBytes() );  
+			    BigInteger hash = new BigInteger( 1, md.digest() );  
+			    senha = hash.toString( 16 ); 
+			 }  
+
+			 catch(NoSuchAlgorithmException ns)  {  
+			    ns.printStackTrace();  
+			 }
 			
 
 			Usuario user = repo.OpenByLogin(usuario);

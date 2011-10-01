@@ -21,6 +21,28 @@
   </servlet-mapping>
   <servlet>
     <description></description>
+    <display-name>Cadastrar</display-name>
+    <servlet-name>Cadastrar</servlet-name>
+    <servlet-class>WebContent.usuarioCadastrar</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Cadastrar</servlet-name>
+    <url-pattern>/Cadastrar</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>Editar</display-name>
+    <servlet-name>Editar</servlet-name>
+    <servlet-class>presentation.usuarioController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Usuario</servlet-name>
+    <url-pattern>/Editar</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <description></description>
     <display-name>Login</display-name>
     <servlet-name>Login</servlet-name>
     <servlet-class>presentation.loginController</servlet-class>

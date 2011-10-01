@@ -20,6 +20,7 @@ a:hover{
 	color: black;	
 }
 
+
 #menu{
 	background:url(../imagens/fundo_menu.png);
 	width:100%;
@@ -33,7 +34,7 @@ a:hover{
 
 .item_menu{
 	padding-top:10px;
-	border: 0px solid red; 
+	border: 0px solid blue; 
 	margin-right: 30px;
 	float: left;	
 }
@@ -42,6 +43,7 @@ a:hover{
 	background:url(../imagens/fundo_topo.png);
 	width:100%;
 	height:160px;
+        border: 0px solid blue;
 }
 #foto{
 	width:187px;
@@ -155,6 +157,12 @@ font:  30px Arial, "Arial", Times, serif;
           background: url(../imagens/fundo_input.png);
           cursor: default;
     }
+.fakebusca{
+          width: 166PX;
+		  height:20PX;
+          background: url(../imagens/fundo_busca.png);
+          cursor: default;
+}
 input,SELECT {
  background-color: #FFF;
  border: 0px solid #e4e4e4;

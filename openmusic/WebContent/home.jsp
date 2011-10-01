@@ -1,4 +1,4 @@
-<%@ include file="header.jsp" %> 
+<%@ include file="header.jsp" %>
 <div id="geral_conteudo">
 <span id="titulo_pagina">
 <div class="sombra11">Home
@@ -73,6 +73,19 @@ for(Amigo a : amigo){
 	<%
 }
 }
+/*try  {  
+    String senha = "123456";  
+    MessageDigest md = MessageDigest.getInstance( "MD5" );  
+      
+    md.update( senha.getBytes() );  
+    BigInteger hash = new BigInteger( 1, md.digest() );  
+    String retornaSenha = hash.toString( 16 );  
+    out.println(retornaSenha);  
+ }  
+
+ catch(NoSuchAlgorithmException ns)  {  
+    ns.printStackTrace();  
+ }*/
 %>
 </div>
 </div>

@@ -1,4 +1,4 @@
-<%@ include file="header_login.jsp" %>
+<%@ include file="header.jsp" %>
 <style type="text/css" >
    * { font-family: Verdana; font-size: 96%; }
 label { display: block; margin-top: 10px; }
@@ -94,42 +94,54 @@ em { font-weight: bold; padding-right: 1em; vertical-align: top; }
 <div class="sombra11">Cadastre-se em nossa rede
     <div class="texto1">Cadastre-se em nossa rede
     </div></div></span><br />
-
+<%
+Usuario u = (Usuario)request.getAttribute("usuario");
+out.println(u.getDatanascimento());
+%>
 <form action="Usuarios" method="post" id="formulario" >
 		<table>
 			<tr>
 			<td id="titulo_input">Nome: </td>
-			<td><input class="fakeupload" type="text" name="nome" value="" /></td></tr>
+			<td><input class="fakeupload" type="text" name="nome" value="<%=u.getNome() %>" /></td></tr>
 			<tr>
 			<td id="titulo_input">Sobrenome: </td>
-			<td><input class="fakeupload" type="text" name="sobrenome" value="" /></td></tr>
+			<td><input class="fakeupload" type="text" name="sobrenome" value="<%=u.getSobrenome() %>" /></td></tr>
 			<tr>
 			<td id="titulo_input">Email: </td>
-			<td><input class="fakeupload" type="text" name="email" value="" /></td></tr>
+			<td><input class="fakeupload" type="text" name="email" value="<%=u.getEmail() %>" /></td></tr>
 			<tr>
 			<td id="titulo_input">Senha: </td>
-			<td><input class="fakeupload" type="password" name="senha" value="" /></td></tr>
+			<td><input class="fakeupload" type="password" name="senha" onfocus="value=''" value="<%=u.getSenha() %>" />
+			<input class="fakeupload" type="hidden" name="senha_oculta" value="<%=u.getSenha() %>" />
+			</td></tr>
 			<tr>
 			<td id="titulo_input">Confirme Senha: </td>
-			<td><input class="fakeupload" type="password" name="confirma_senha" value="" /></td></tr>
+			<td><input class="fakeupload" type="password" name="confirma_senha" onfocus="value=''" value="<%=u.getSenha() %>" /></td></tr>
 			<tr>
 			<td id="titulo_input">Sexo: </td>
 			<td>
 			<select class="fakeupload" name="sexo" id="sexo">
+			<% if(u.getSexo().equals("Masculino")){ %>
             <option>Masculino</option>
             <option>Feminino</option>
+            <% }else{ %>
+            <option>Feminino</option>
+            <option>Masculino</option>
+            <% } %>
             </select>
 			</td></tr>
 			<tr>
 			<td id="titulo_input">Data Nascimento: </td>
-			<td><input class="fakeupload" type="text" name="data_nascimento" value="" id="data_nascimento" /></td></tr>
+			<td><input class="fakeupload" type="text" name="data_nascimento" value="<%=u.getDatanascimento() %>" id="data_nascimento" /></td></tr>
 			<tr>
 			<td id="titulo_input">Cidade: </td>
-			<td><input class="fakeupload" type="text" name="cidade" value="" /></td></tr>
+			<td><input class="fakeupload" type="text" name="cidade" value="<%=u.getCidade() %>" /></td></tr>
 			<tr>
 			<td id="titulo_input">Estado: </td>
 			<td>
 			<select class="fakeupload" name="estado" id="estado">
+			<option><%=u.getEstado() %></option>
+			<option>--------------</option>
             <option>MG</option>
             <option>AL</option>
             <option>AM</option>
@@ -161,7 +173,7 @@ em { font-weight: bold; padding-right: 1em; vertical-align: top; }
 			</td></tr>
 			<tr>
 			<td id="titulo_input">Pais: </td>
-			<td><input class="fakeupload" type="text" name="pais" value="" /></td>
+			<td><input class="fakeupload" type="text" name="pais" value="<%=u.getPais() %>" /></td>
 			</tr>
 		</table>
 		<input id="efetuar" type="submit" value="Salvar" />

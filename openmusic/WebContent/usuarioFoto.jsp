@@ -10,13 +10,18 @@
 			<tr>
 			<input type="hidden" id="tipoForm" name="tipoForm" value="imagem">
 			<td id="titulo_input" align="right">Foto: </td>
-			<td><input class="fakeupload" name="foto" type="file" id="imagem" ></td></tr>
+			<td><input name="foto" type="file" id="imagem" ></td></tr>
 			<tr>
 			<td></td>
 			<td><input id="efetuar" type="submit" value="Enviar" /></td>
 			</tr>
 		</table>
 </form>
+
+<!-- <form action="Usuarios" method="post" ENCTYPE="multipart/form-data">
+<input type="file" name="arquivo" id="arquivo">
+<input type="submit" value="Enviar">
+</form> -->
 
 </body>
 </html>

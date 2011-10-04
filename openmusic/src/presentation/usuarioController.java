@@ -33,6 +33,9 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 
 import org.apache.commons.io.*;
+import org.apache.commons.fileupload.*;
+import java.util.*;
+import java.io.*;
 
 /**
  * Servlet implementation class usuarioController
@@ -93,12 +96,14 @@ public class usuarioController extends HttpServlet {
 				listagem.forward(request, response);
 				return;
 			}
-			if(request.getParameter("foto") != null){
-				boolean isMultiPart = ServletFileUpload.isMultipartContent(request);
-				Usuario usuario = repositorio.OpenByLogin(request.getAttribute("email_foto").toString());
-				
+			boolean isMultiPart = ServletFileUpload.isMultipartContent(request);
+			if(isMultiPart){
+				//boolean isMultiPart = ServletFileUpload.isMultipartContent(request);
+				//Usuario usuario = repositorio.OpenByLogin(request.getAttribute("email_foto").toString());
+				String email_novo = "foto@gmail.com";
+				Usuario usuario = repositorio.OpenByLogin(email_novo);
 				if (isMultiPart){
-					
+
 					FileItemFactory factory = new DiskFileItemFactory();
 					ServletFileUpload upload = new ServletFileUpload(factory);
 					String formulario = "";
@@ -114,6 +119,7 @@ public class usuarioController extends HttpServlet {
 								if (item.getName().length() > 0) {
 									usuario.setFoto(item.getName());
 									repositorio.Save(usuario);
+									inserirImagemDiretorio(item);
 									RequestDispatcher listagem = request.getRequestDispatcher("login.jsp");
 									listagem.forward(request, response);
 									return;
@@ -128,8 +134,6 @@ public class usuarioController extends HttpServlet {
 						String tmp = ex.getMessage();
 					}
 				}
-
-
 			}
 			
 			
@@ -207,6 +211,39 @@ public class usuarioController extends HttpServlet {
 			ex.printStackTrace();
 		}
 	}
+	
+	private void inserirImagemDiretorio(FileItem item) throws
+    IOException {
 
+//Pega o diretório /logo dentro do diretório atual de onde a
+//aplicação está rodando
+//String caminho = getServletContext().getRealPath("/logo")
+String caminho = "C:/Users/ROBSON/Documents/AulaJSP/openmusic/fotos/";
+
+// Cria o diretório caso ele não exista
+File diretorio = new File(caminho);
+if (!diretorio.exists()){
+diretorio.mkdir();
+}
+
+// Mandar o arquivo para o diretório informado
+String nome = item.getName();
+String arq[] = nome.split("\\\\");
+for (int i = 0; i < arq.length; i++) {
+nome = arq[i];
+}
+
+File file = new File(diretorio, nome);
+FileOutputStream output = new FileOutputStream(file);
+InputStream is = item.getInputStream();
+byte[] buffer = new byte[2048];
+int nLidos;
+while ((nLidos = is.read(buffer)) >= 0) {
+output.write(buffer, 0, nLidos);
+}
+output.flush();
+output.close();
+	}
+	
 }
 

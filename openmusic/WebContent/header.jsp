@@ -22,11 +22,13 @@
 <div class="item_menu"><a href="home.jsp">home</a></div> 
 <div class="item_menu"><a href="Perfil">perfil</a></div>
 <div class="item_menu"><a href="Recado">recados</a></div>
+<div style="float: right; padding: 5px; ">
   <form method="post" action="/openmusic/Usuarios" name="form1" >
 	Busca:
 	<input type="text" class="fakebusca" name="busca" x-webkit-speech  />
 	<input type="submit" id="efetuar" value="buscar" />
 </form>
+</div>
 </div>
 </div>
 <div id="geral_topo">

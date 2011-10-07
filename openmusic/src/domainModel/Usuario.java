@@ -110,13 +110,14 @@ public class Usuario {
 		try{
 
 	           SimpleDateFormat df = new SimpleDateFormat("dd/mm/yyyy");
-	           String dataImprime = df.format(datanascimento);
-	           datanascimento = df.parse(dataImprime);
-	          return(df.parse(dataImprime));
+	           Date dataImprime = df.parse(df.format(datanascimento));
+	           
+	          return(dataImprime);
 	      }catch(Exception e){
 	        System.out.println("Erro ao converter DATA: "+e.getMessage());
 	        return null;
 	      }
+
 	}
 
 	public void setDatanascimento(String datanasc) throws Exception{

@@ -20,12 +20,10 @@ int cod;
 session = request.getSession();
 cod = Integer.parseInt(session.getAttribute("cod_usuario").toString());
 Usuario usuario = usuarioRepository.Open(cod);
-String foto = "";
-foto = baseURL+"/fotos/"+usuario.getFoto();
-
+//out.println("../fotos/"+usuario.getFoto());
 %>
 <div style="float: left; border: 1px solid red;">
-<img alt="" src="<%=foto %>" width="151" height="180">
+<img src="../fotos/<%=usuario.getFoto() %>" width="140" height="180">
 </div>
 <%
 //realizar seleção conforme id do usuario logado

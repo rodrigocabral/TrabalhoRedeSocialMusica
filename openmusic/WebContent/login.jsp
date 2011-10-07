@@ -1,6 +1,7 @@
 <%@ include file="header_login.jsp" %> 
 
-<% session.removeAttribute("cod_usuario"); %>
+<% 
+ %>
 
 <div id="geral_conteudo">
 <span id="titulo_pagina">
@@ -23,6 +24,11 @@
 <span id="titulo_pagina" style="float: left; width: 95px;">
 <div class="sombra11">Senha:</div></span>
 <input type="password" value="" class="fakeupload" name="senha" /><p></p>
+
+<div id="lista_amigos" style="margin-top: -10px; margin-left: 80px;">
+<a href="usuarioCadastrar.jsp">Cadastra-se</a>
+</div>
+
 <span style="margin-left: 270px; display: table;">
 <input type="submit" id="efetuar" value="Entrar" />
 </span>

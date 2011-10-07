@@ -162,6 +162,7 @@ font:  30px Arial, "Arial", Times, serif;
 		  height:20PX;
           background: url(../imagens/fundo_busca.png);
           cursor: default;
+          border: 0px  solid red;
 }
 input,SELECT {
  background-color: #FFF;

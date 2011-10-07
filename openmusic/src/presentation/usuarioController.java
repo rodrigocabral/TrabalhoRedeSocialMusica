@@ -99,9 +99,11 @@ public class usuarioController extends HttpServlet {
 			boolean isMultiPart = ServletFileUpload.isMultipartContent(request);
 			if(isMultiPart){
 				//boolean isMultiPart = ServletFileUpload.isMultipartContent(request);
-				//Usuario usuario = repositorio.OpenByLogin(request.getAttribute("email_foto").toString());
-				String email_novo = "foto@gmail.com";
-				Usuario usuario = repositorio.OpenByLogin(email_novo);
+				HttpSession session = request.getSession();
+				Usuario usuario = repositorio.OpenByLogin(session.getAttribute("email_foto").toString());
+				session.removeAttribute("email_foto");
+				//String email_novo = "foto@gmail.com";
+				//Usuario usuario = repositorio.OpenByLogin(email_novo);
 				if (isMultiPart){
 
 					FileItemFactory factory = new DiskFileItemFactory();
@@ -196,6 +198,8 @@ public class usuarioController extends HttpServlet {
 			
 								
 			repositorio.Save(usuario);
+			HttpSession session = request.getSession();
+			session.setAttribute("email_foto", email);
 			request.setAttribute("email_foto", email);
 			if(request.getParameter("senha_oculta") != null){
 				RequestDispatcher listagem = request.getRequestDispatcher("home.jsp");

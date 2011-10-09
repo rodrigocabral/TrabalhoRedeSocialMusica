@@ -14,11 +14,11 @@ public class Amigo {
 	
 	@ManyToOne
 	@JoinColumn(name="idamigo1")
-	private Usuario idamigo1;
+	private Usuario amigo1;
 	
 	@ManyToOne
 	@JoinColumn(name="idamigo2")
-	private Usuario idamigo2;
+	private Usuario amigo2;
 
 	public int getId() {
 		return id;
@@ -27,21 +27,21 @@ public class Amigo {
 	public void setId(int id) {
 		this.id = id;
 	}
-
-	public Usuario getIdAmigo1() {
-		return idamigo1;
+	
+	public void setAmigo1(Usuario amigo1) {
+		this.amigo1 = amigo1;
 	}
 
-	public void setIdAmigo1(Usuario idAmigo1) {
-		this.idamigo1 = idAmigo1;
+	public Usuario getAmigo1() {
+		return amigo1;
+	}
+	
+	public void setAmigo2(Usuario amigo2) {
+		this.amigo2 = amigo2;
 	}
 
-	public Usuario getIdAmigo2() {
-		return idamigo2;
-	}
-
-	public void setIdAmigo2(Usuario idAmigo2) {
-		this.idamigo2 = idAmigo2;
+	public Usuario getAmigo2() {
+		return amigo2;
 	}
 	
 	

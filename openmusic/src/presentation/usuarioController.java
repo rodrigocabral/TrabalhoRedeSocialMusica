@@ -195,6 +195,7 @@ public class usuarioController extends HttpServlet {
 			usuario.setCidade(cidade);
 			usuario.setEstado(estado);
 			usuario.setPais(pais);
+			usuario.setFoto("foto_default.jpg");
 			
 								
 			repositorio.Save(usuario);
@@ -222,7 +223,7 @@ public class usuarioController extends HttpServlet {
 //Pega o diretório /logo dentro do diretório atual de onde a
 //aplicação está rodando
 //String caminho = getServletContext().getRealPath("/logo")
-String caminho = "C:/Users/ROBSON/Documents/AulaJSP/openmusic/fotos/";
+String caminho = "C:/Users/ROBSON/Documents/AulaJSP/openmusic/WebContent/fotos/";
 
 // Cria o diretório caso ele não exista
 File diretorio = new File(caminho);

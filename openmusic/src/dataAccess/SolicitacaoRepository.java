@@ -61,7 +61,7 @@ public class SolicitacaoRepository {
 	
 	public Solicitacao getByUsuario(int cod1, int cod2){
 		try{
-			return (Solicitacao) maneger.createQuery("select s from Solicitacao s join s.idsolicitado u join s.idsolicitador us where (u.id =:id1 and us.id =:id2) or (u.id =:id2 and us.id =:id1)")
+			return (Solicitacao) maneger.createQuery("select s from Solicitacao s join s.solicitado u join s.solicitador us where (u.id =:id1 and us.id =:id2) or (u.id =:id2 and us.id =:id1)")
 			.setParameter("id1", cod1)
 			.setParameter("id2", cod2)
 			.getSingleResult();
@@ -72,7 +72,7 @@ public class SolicitacaoRepository {
 	}
 	
 	public List getBySolicitacao(int cod){
-		return maneger.createQuery("select s from Solicitacao s join s.idsolicitado u where u.id =:id")
+		return maneger.createQuery("select s from Solicitacao s join s.solicitado u where u.id =:id")
 		.setParameter("id", cod)
 		.getResultList();
 	}

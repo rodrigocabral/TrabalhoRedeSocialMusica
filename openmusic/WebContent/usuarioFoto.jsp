@@ -16,7 +16,9 @@
 			</tr>
 		</table>
 </form>
-
+<div id="lista_amigos"">
+<a href="Login">Deixar foto para depois</a>
+</div>
 <!-- <form action="Usuarios" method="post" ENCTYPE="multipart/form-data">
 <input type="file" name="arquivo" id="arquivo">
 <input type="submit" value="Enviar">

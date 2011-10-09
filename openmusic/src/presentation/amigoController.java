@@ -62,8 +62,8 @@ public class amigoController extends HttpServlet {
 				Solicitacao s = solicitacaorepositorio.getByUsuario(cod,cod_amigo);
 
 				Amigo a = new Amigo();
-				a.setIdAmigo1(s.getIdSolicitado());
-				a.setIdAmigo2(s.getIdSolicitador());
+				a.setAmigo1(s.getSolicitado());
+				a.setAmigo2(s.getSolicitador());
 				repositorio.Save(a);
 				solicitacaorepositorio.Delete(s);
 				request.getRequestDispatcher("home.jsp").forward(request, response);

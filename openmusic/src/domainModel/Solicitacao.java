@@ -14,11 +14,11 @@ public class Solicitacao {
 	
 	@ManyToOne
 	@JoinColumn(name="idsolicitador")
-	private Usuario idsolicitador;
+	private Usuario solicitador;
 	
 	@ManyToOne
 	@JoinColumn(name="idsolicitado")
-	private Usuario idsolicitado;
+	private Usuario solicitado;
 
 	public int getId() {
 		return id;
@@ -27,22 +27,21 @@ public class Solicitacao {
 	public void setId(int id) {
 		this.id = id;
 	}
-
-	public Usuario getIdSolicitador() {
-		return idsolicitador;
-	}
-
-	public void setIdSolicitador(Usuario idsolicitador) {
-		this.idsolicitador = idsolicitador;
-	}
-
-	public Usuario getIdSolicitado() {
-		return idsolicitado;
-	}
-
-	public void setIdSolicitado(Usuario idsolicitado) {
-		this.idsolicitado = idsolicitado;
-	}
 	
-	
+	public Usuario getSolicitador() {
+		return solicitador;
+	}
+
+	public void setSolicitador(Usuario solicitador) {
+		this.solicitador = solicitador;
+	}
+
+	public Usuario getSolicitado() {
+		return solicitado;
+	}
+
+	public void setSolicitado(Usuario solicitado) {
+		this.solicitado = solicitado;
+	}
+
 }

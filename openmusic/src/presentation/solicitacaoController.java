@@ -81,10 +81,10 @@ public class solicitacaoController extends HttpServlet {
 					Solicitacao s = new Solicitacao();
 					
 					Usuario u = usuariorepositorio.Open(cod2);												
-					s.setIdSolicitado(u);
+					s.setSolicitado(u);
 					
 					u = usuariorepositorio.Open(cod1);
-					s.setIdSolicitador(u);
+					s.setSolicitador(u);
 					
 					repositorio.Save(s);
 					//enviar mensagem para a página perfilUsuario onde se encontra o usuário

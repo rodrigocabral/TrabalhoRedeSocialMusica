@@ -10,6 +10,9 @@
     <div class="texto1">Perfil de <%=usuario.getNome() %>
     </div>
 </div></span><br />
+<div style="float: left; border: 0px solid red;">
+<img src="fotos/<%=usuario.getFoto() %>" width="100" height="125">
+</div>
 <div id="lista_amigos">
 <a href="Recado?cod=<%=usuario.getId() %>">Recados</a>
 </div>
@@ -44,16 +47,26 @@ for(Amigo a : amigo){
 	%>
 	<div id="titulo_input">
 	<%
-	if(a.getIdAmigo1().getId() != usuario.getId()){
+	if(a.getAmigo1().getId() != usuario.getId()){
 		%>
 		<p>
-		<a href="Perfil?cod=<%=a.getIdAmigo1().getId() %>"><%=a.getIdAmigo1().getNome() %></a>
+		<div style="border: 0px solid red; margin-bottom: 20px;">
+		<a href="Perfil?cod=<%=a.getAmigo1().getId() %>">
+		<div style="clear: both; margin-right: 5px; float: left;"><img src="fotos/<%=a.getAmigo1().getFoto() %>" width="25" height="25"></div>
+		<div style="height: 25px;"><%=a.getAmigo1().getNome() %></div>
+		</a>
+		</div>
 		</p>
 		<%
 	}else{
 		%>
 		<p>
-		<a href="Perfil?cod=<%=a.getIdAmigo2().getId() %>"><%=a.getIdAmigo2().getNome() %></a>
+		<div style="border: 0px solid red; margin-bottom: 20px;">
+		<a href="Perfil?cod=<%=a.getAmigo2().getId() %>">
+		<div style="clear: both; margin-right: 5px; float: left;"><img src="fotos/<%=a.getAmigo2().getFoto() %>" width="25" height="25"></div>
+		<div style="height: 25px;"><%=a.getAmigo2().getNome() %></div>
+		</a>
+		</div>
 		</p>
 		<%
 	}

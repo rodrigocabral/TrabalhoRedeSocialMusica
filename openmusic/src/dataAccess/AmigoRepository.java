@@ -57,7 +57,7 @@ public class AmigoRepository {
 	
 	public List getTop10ByName(int cod){
 		try{
-		return manager.createQuery("select a from Amigo a join a.idamigo1 u join a.idamigo2 us where u.id =:id or us.id =:id2")
+		return manager.createQuery("select a from Amigo a join a.amigo1 u join a.amigo2 us where u.id =:id or us.id =:id2")
 		.setParameter("id", cod)
 		.setParameter("id2", cod)
 		.setMaxResults(10).getResultList();
@@ -69,7 +69,7 @@ public class AmigoRepository {
 	
 	public Amigo getByName(int cod1, int cod2) {
 		try{
-		return (Amigo) manager.createQuery("select a from Amigo a join a.idamigo1 u join a.idamigo2 us where (u.id =:id and us.id =:id2) or (u.id =:id2 and us.id =:id)")
+		return (Amigo) manager.createQuery("select a from Amigo a join a.amigo1 u join a.amigo2 us where (u.id =:id and us.id =:id2) or (u.id =:id2 and us.id =:id)")
 		.setParameter("id", cod1)
 		.setParameter("id2", cod2)
 		.getSingleResult();	

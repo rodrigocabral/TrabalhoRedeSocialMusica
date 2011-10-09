@@ -22,8 +22,8 @@ cod = Integer.parseInt(session.getAttribute("cod_usuario").toString());
 Usuario usuario = usuarioRepository.Open(cod);
 //out.println("../fotos/"+usuario.getFoto());
 %>
-<div style="float: left; border: 1px solid red;">
-<img src="../fotos/<%=usuario.getFoto() %>" width="140" height="180">
+<div style="float: left; border: 0px solid red; margin-left: 5px;">
+<img src="fotos/<%=usuario.getFoto() %>" width="100" height="125">
 </div>
 <%
 //realizar seleção conforme id do usuario logado
@@ -36,10 +36,10 @@ if(s != null){
 		<div id="titulo_input">
 		<div id="lista_amigos">
 		<%
-		out.println(so.getIdSolicitador().getNome());
+		out.println(so.getSolicitador().getNome());
 			%> solicitou sua amizade, confirma o pedido?<br />
-			<a href="Amigo?resp=s&cod=<%=so.getIdSolicitador().getId() %>">sim</a> |
-			<a href="Amigo?resp=n&cod=<%=so.getIdSolicitador().getId() %>">não</a>
+			<a href="Amigo?resp=s&cod=<%=so.getSolicitador().getId() %>">sim</a> |
+			<a href="Amigo?resp=n&cod=<%=so.getSolicitador().getId() %>">não</a>
 			</div>
 			</div>
 			<br />
@@ -64,16 +64,26 @@ for(Amigo a : amigo){
 	%>
 	<div id="titulo_input">
 	<%
-	if(a.getIdAmigo1().getId() != cod){
+	if(a.getAmigo1().getId() != cod){
 		%>
 		<p>
-		<a href="Perfil?cod=<%=a.getIdAmigo1().getId() %>"><%=a.getIdAmigo1().getNome() %></a>
+		<div style="border: 0px solid red; margin-bottom: 20px;">
+		<a href="Perfil?cod=<%=a.getAmigo1().getId() %>">
+		<div style="clear: both; margin-right: 5px; float: left;"><img src="fotos/<%=a.getAmigo1().getFoto() %>" width="25" height="25"></div>
+		<div style="height: 25px;"><%=a.getAmigo1().getNome() %></div>
+		</a>
+		</div>
 		</p>
 		<%
 	}else{
 		%>
 		<p>
-		<a href="Perfil?cod=<%=a.getIdAmigo2().getId() %>"><%=a.getIdAmigo2().getNome() %></a>
+		<div style="border: 0px solid red; margin-bottom: 20px;">
+		<a href="Perfil?cod=<%=a.getAmigo2().getId() %>">
+		<div style="clear: both; margin-right: 5px; float: left;"><img src="fotos/<%=a.getAmigo2().getFoto() %>" width="25" height="25"></div>
+		<div style="height: 25px;"><%=a.getAmigo2().getNome() %></div>
+		</a>
+		</div>
 		</p>
 		<%
 	}

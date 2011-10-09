@@ -38,8 +38,13 @@ if(request.getAttribute("erro") != null){
 		   %>
 		   <tr>
 		   <td>
+		   <a href="Perfil?cod=<%=u.getAmigo().getId() %>">
+		   <img src="fotos/<%=u.getAmigo().getFoto() %>" width="25" height="25">
+		   </a>
+		   </td>
+		   <td>
 		   <div id="lista_amigos">
-		   <a style="color: black;" href="Perfil?cod=<%=u.getIdamigo().getId() %>"><%=u.getIdamigo().getNome() %></a> disse:
+		   <a style="color: black;" href="Perfil?cod=<%=u.getAmigo().getId() %>"><%=u.getAmigo().getNome() %></a> disse:
 		   </div> 
 		   </td>
 		   <td></td>
@@ -47,9 +52,9 @@ if(request.getAttribute("erro") != null){
 		   <tr>
 		   		<td></td>
 		   		<td align="left"><%=u.getRecado() %></td>
-		   		<% if(u.getIdamigo().getId() == Integer.parseInt(session.getAttribute("cod_usuario").toString()) 
+		   		<% if(u.getAmigo().getId() == Integer.parseInt(session.getAttribute("cod_usuario").toString()) 
 		   				|| 
-		   				u.getIdusuario().getId() == Integer.parseInt(session.getAttribute("cod_usuario").toString())){ %>
+		   				u.getUsuario().getId() == Integer.parseInt(session.getAttribute("cod_usuario").toString())){ %>
 		   		<td>
 		   		<div id="titulo_input">
 		   		<div id="lista_amigos">

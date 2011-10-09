@@ -115,7 +115,7 @@ public class recadoController extends HttpServlet {
 				UsuarioRepository user_repo = new UsuarioRepository();
 				int cod_usuario_recado = Integer.parseInt(request.getParameter("cod_usuario_recado").toString());
 				
-				rec.setIdusuario(user_repo.Open(cod_usuario_recado));
+				rec.setUsuario(user_repo.Open(cod_usuario_recado));
 				
 				//texto do recado
 				rec.setRecado(recado);
@@ -124,7 +124,7 @@ public class recadoController extends HttpServlet {
 				HttpSession session = request.getSession();
 				int cod_usuario = Integer.parseInt(session.getAttribute("cod_usuario").toString());
 				
-				rec.setIdamigo(user_repo.Open(cod_usuario));
+				rec.setAmigo(user_repo.Open(cod_usuario));
 				
 				
 				repositorio.Save(rec);

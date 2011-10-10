@@ -1,23 +1,22 @@
 package dataAccess;
 
-import domainModel.Recado;
+import domainModel.Musica;
 
 import java.util.List;
 
 import javax.persistence.*;
 
-public class RecadoRepository {
-	
+public class MusicaRepository {
 	private EntityManager manager;
 	private EntityManagerFactory factory;
 	private EntityTransaction transaction;
 	
-	public RecadoRepository(){
+	public MusicaRepository(){
 		factory = Persistence.createEntityManagerFactory("openmusic");
 		manager = factory.createEntityManager();
 	}
-	
-	public void Save(Recado obj) throws Exception{
+
+	public void Save(Musica obj) throws Exception{
 		try{
 			transaction = manager.getTransaction();
 			transaction.begin();
@@ -30,8 +29,7 @@ public class RecadoRepository {
 		}
 	}
 	
-	//verificar utilidade para a rede social
-	public void Delete(Recado obj) throws Exception{
+	public void Delete(Musica obj) throws Exception{
 		try{
 			transaction = manager.getTransaction();
 			transaction.begin();
@@ -45,19 +43,23 @@ public class RecadoRepository {
 	}
 	
 	
-	public Recado Open(int id) throws Exception{
+	public Musica Open(int id) throws Exception{
 		try{
-			return manager.find(Recado.class, id);
+			return manager.find(Musica.class, id);
 		}
 		catch(Exception ex){
 			throw ex;
 		}
 	}
 	
-	public List getTop10ByName(int cod){
-		return manager.createQuery("select r from Recado r join r.usuario u where u.id  =:id order by r.id desc")
-		.setParameter("id", cod)
+	public List getTop10ByName(){
+		return manager.createQuery("select m from Musica m order by m.id")
 		.setMaxResults(10).getResultList();
 	}
-
+	
+	public List getBySolicitacao(int cod){
+		return manager.createQuery("select m from Musica m join m.usuario u where u.id =:id")
+		.setParameter("id", cod)
+		.getResultList();
+	}
 }

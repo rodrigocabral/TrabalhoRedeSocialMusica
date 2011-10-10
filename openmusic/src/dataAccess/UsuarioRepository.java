@@ -9,20 +9,20 @@ import javax.persistence.*;
 
 public class UsuarioRepository {
 	
-	private EntityManager maneger;
+	private EntityManager manager;
 	private EntityManagerFactory factory;
 	private EntityTransaction transaction;
 	
 	public UsuarioRepository(){
 		factory = Persistence.createEntityManagerFactory("openmusic");
-		maneger = factory.createEntityManager();
+		manager = factory.createEntityManager();
 	}
 	
 	public void Save(Usuario obj) throws Exception{
 		try{
-			transaction = maneger.getTransaction();
+			transaction = manager.getTransaction();
 			transaction.begin();
-			maneger.persist(obj);
+			manager.persist(obj);
 			transaction.commit();
 		}
 		catch(Exception ex){
@@ -34,9 +34,9 @@ public class UsuarioRepository {
 	//verificar utilidade para a rede social
 	public void Delete(Usuario obj) throws Exception{
 		try{
-			transaction = maneger.getTransaction();
+			transaction = manager.getTransaction();
 			transaction.begin();
-			maneger.remove(obj);
+			manager.remove(obj);
 			transaction.commit();
 		}
 		catch(Exception ex){
@@ -48,7 +48,7 @@ public class UsuarioRepository {
 	
 	public Usuario Open(int id) throws Exception{
 		try{
-			return maneger.find(Usuario.class, id);
+			return manager.find(Usuario.class, id);
 		}
 		catch(Exception ex){
 			throw ex;
@@ -56,13 +56,13 @@ public class UsuarioRepository {
 	}
 	
 	public List getTop10ByName(){
-		return maneger.createQuery("select u from Usuario u order by u.nome")
+		return manager.createQuery("select u from Usuario u order by u.nome")
 		.setMaxResults(10).getResultList();
 	}
 	
 	public List getTop10ByName(String busca){
 		try{
-			return maneger.createQuery("select u from Usuario u where u.nome = :b")
+			return manager.createQuery("select u from Usuario u where u.nome = :b")
 			.setParameter("b", busca)
 			.setMaxResults(10).getResultList();
 		}catch(Exception ex){
@@ -74,7 +74,7 @@ public class UsuarioRepository {
 	
 	public Usuario OpenByLogin(String usuario){
 		try{
-			return (Usuario) maneger.createQuery("select u from Usuario u where u.email =:log")
+			return (Usuario) manager.createQuery("select u from Usuario u where u.email =:log")
 			.setParameter("log", usuario)
 			.getSingleResult();		 
 		}catch(Exception ex){

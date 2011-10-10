@@ -8,20 +8,20 @@ import javax.persistence.*;
 
 public class SolicitacaoRepository {
 	
-	private EntityManager maneger;
+	private EntityManager manager;
 	private EntityManagerFactory factory;
 	private EntityTransaction transaction;
 	
 	public SolicitacaoRepository(){
 		factory = Persistence.createEntityManagerFactory("openmusic");
-		maneger = factory.createEntityManager();
+		manager = factory.createEntityManager();
 	}
 	
 	public void Save(Solicitacao obj) throws Exception{
 		try{
-			transaction = maneger.getTransaction();
+			transaction = manager.getTransaction();
 			transaction.begin();
-			maneger.persist(obj);
+			manager.persist(obj);
 			transaction.commit();
 		}
 		catch(Exception ex){
@@ -33,9 +33,9 @@ public class SolicitacaoRepository {
 	//verificar utilidade para a rede social
 	public void Delete(Solicitacao obj) throws Exception{
 		try{
-			transaction = maneger.getTransaction();
+			transaction = manager.getTransaction();
 			transaction.begin();
-			maneger.remove(obj);
+			manager.remove(obj);
 			transaction.commit();
 		}
 		catch(Exception ex){
@@ -47,7 +47,7 @@ public class SolicitacaoRepository {
 	
 	public Solicitacao Open(int id) throws Exception{
 		try{
-			return maneger.find(Solicitacao.class, id);
+			return manager.find(Solicitacao.class, id);
 		}
 		catch(Exception ex){
 			throw ex;
@@ -55,13 +55,13 @@ public class SolicitacaoRepository {
 	}
 	
 	public List getTop10ByName(){
-		return maneger.createQuery("select u from Solicitacao u order by u.id")
+		return manager.createQuery("select u from Solicitacao u order by u.id")
 		.setMaxResults(10).getResultList();
 	}
 	
 	public Solicitacao getByUsuario(int cod1, int cod2){
 		try{
-			return (Solicitacao) maneger.createQuery("select s from Solicitacao s join s.solicitado u join s.solicitador us where (u.id =:id1 and us.id =:id2) or (u.id =:id2 and us.id =:id1)")
+			return (Solicitacao) manager.createQuery("select s from Solicitacao s join s.solicitado u join s.solicitador us where (u.id =:id1 and us.id =:id2) or (u.id =:id2 and us.id =:id1)")
 			.setParameter("id1", cod1)
 			.setParameter("id2", cod2)
 			.getSingleResult();
@@ -72,7 +72,7 @@ public class SolicitacaoRepository {
 	}
 	
 	public List getBySolicitacao(int cod){
-		return maneger.createQuery("select s from Solicitacao s join s.solicitado u where u.id =:id")
+		return manager.createQuery("select s from Solicitacao s join s.solicitado u where u.id =:id")
 		.setParameter("id", cod)
 		.getResultList();
 	}

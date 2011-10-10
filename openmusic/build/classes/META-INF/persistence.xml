@@ -8,6 +8,8 @@
 		<class>domainModel.Recado</class>
 		<class>domainModel.Amigo</class>
 		<class>domainModel.Solicitacao</class>
+		<class>domainModel.Musica</class>
+		<class>domainModel.Mixagem</class>
 		<exclude-unlisted-classes>false</exclude-unlisted-classes>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>

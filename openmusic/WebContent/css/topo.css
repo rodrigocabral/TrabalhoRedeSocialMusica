@@ -67,6 +67,16 @@ a:hover{
 	margin-right:15px;
 	background:url(../imagens/botao_foto.png);
 }
+#efetuar_busca{
+	width:187px;
+	height:35px;
+	padding-bottom: 10px;
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:16px;
+	color:#666666;
+	margin-right:15px;
+	background:url(../imagens/botao_foto.png);
+}
 #conteudo_topo{
 	margin:auto;
 	width:800px;

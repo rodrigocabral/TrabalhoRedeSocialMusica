@@ -7,7 +7,7 @@
 </div></span><br />
 <%
 
-String baseURL = request.getRequestURL().toString().replace(request.getRequestURI().substring(0), request.getContextPath());
+//String baseURL = request.getRequestURL().toString().replace(request.getRequestURI().substring(0), request.getContextPath());
 
 
 //declarando repositorio de amigo e usuario
@@ -22,8 +22,8 @@ cod = Integer.parseInt(session.getAttribute("cod_usuario").toString());
 Usuario usuario = usuarioRepository.Open(cod);
 //out.println("../fotos/"+usuario.getFoto());
 %>
-<div style="float: left; border: 0px solid red; margin-left: 5px;">
-<img src="fotos/<%=usuario.getFoto() %>" width="100" height="125">
+<div style="float: left; border: 0px solid red; margin-left: 5px; color: black;">
+<a href="usuarioFoto.jsp" title="Alterar foto"><img src="fotos/<%=usuario.getFoto() %>" width="100" height="125"></a>
 </div>
 <%
 //realizar seleção conforme id do usuario logado

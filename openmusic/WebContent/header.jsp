@@ -27,7 +27,7 @@
   <form method="post" action="/openmusic/Usuarios" name="form1" >
 	Busca:
 	<input type="text" class="fakebusca" name="busca" x-webkit-speech  />
-	<input type="submit" id="efetuar" value="buscar" />
+	<input type="submit" id="efetuar_busca" value="buscar" />
 </form>
 </div>
 </div>

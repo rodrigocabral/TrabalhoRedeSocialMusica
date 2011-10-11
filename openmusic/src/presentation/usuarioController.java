@@ -100,8 +100,12 @@ public class usuarioController extends HttpServlet {
 			if(isMultiPart){
 				//boolean isMultiPart = ServletFileUpload.isMultipartContent(request);
 				HttpSession session = request.getSession();
-				Usuario usuario = repositorio.OpenByLogin(session.getAttribute("email_foto").toString());
-				session.removeAttribute("email_foto");
+				Usuario usuario;
+				if(session.getAttribute("email_foto") != null){
+					usuario = repositorio.OpenByLogin(session.getAttribute("email_foto").toString());
+				}else{
+					usuario = repositorio.Open(Integer.parseInt(session.getAttribute("cod_usuario").toString()));
+				}
 				//String email_novo = "foto@gmail.com";
 				//Usuario usuario = repositorio.OpenByLogin(email_novo);
 				if (isMultiPart){
@@ -122,9 +126,16 @@ public class usuarioController extends HttpServlet {
 									usuario.setFoto(item.getName());
 									repositorio.Save(usuario);
 									inserirImagemDiretorio(item);
-									RequestDispatcher listagem = request.getRequestDispatcher("login.jsp");
-									listagem.forward(request, response);
-									return;
+									if(session.getAttribute("email_foto") != null){
+										session.removeAttribute("email_foto");
+										RequestDispatcher listagem = request.getRequestDispatcher("login.jsp");
+										listagem.forward(request, response);
+										return;
+									}else{
+										RequestDispatcher listagem = request.getRequestDispatcher("home.jsp");
+										listagem.forward(request, response);
+										return;
+									}
 								}
 							}
 						}

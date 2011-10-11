@@ -164,7 +164,7 @@ public class Usuario {
 	           SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 	           String dataImprime = df.format(data);
 	           
-	          return(dataImprime);
+	           return(dataImprime);
 	      }catch(Exception e){
 	        System.out.println("Erro ao converter DATA: "+e.getMessage());
 	        return null;

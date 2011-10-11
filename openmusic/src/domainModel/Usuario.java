@@ -107,17 +107,7 @@ public class Usuario {
 
 	//set get datanascimento
 	public Date getDatanascimento(){
-		try{
-
-	           SimpleDateFormat df = new SimpleDateFormat("dd/mm/yyyy");
-	           Date dataImprime = df.parse(df.format(datanascimento));
-	           
-	          return(dataImprime);
-	      }catch(Exception e){
-	        System.out.println("Erro ao converter DATA: "+e.getMessage());
-	        return null;
-	      }
-
+		return datanascimento;
 	}
 
 	public void setDatanascimento(String datanasc) throws Exception{
@@ -168,6 +158,17 @@ public class Usuario {
 		return foto;
 	}
 	
-	
+	public String dataImpres(java.util.Date data){
+		try{
+
+	           SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+	           String dataImprime = df.format(data);
+	           
+	          return(dataImprime);
+	      }catch(Exception e){
+	        System.out.println("Erro ao converter DATA: "+e.getMessage());
+	        return null;
+	      }
+	}
 
 }

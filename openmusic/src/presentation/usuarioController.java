@@ -195,7 +195,9 @@ public class usuarioController extends HttpServlet {
 			usuario.setCidade(cidade);
 			usuario.setEstado(estado);
 			usuario.setPais(pais);
-			usuario.setFoto("foto_default.jpg");
+			if(request.getParameter("senha_oculta") == null){
+				usuario.setFoto("foto_default.jpg");
+			}
 			
 								
 			repositorio.Save(usuario);

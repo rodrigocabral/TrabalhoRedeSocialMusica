@@ -96,7 +96,7 @@ em { font-weight: bold; padding-right: 1em; vertical-align: top; }
     </div></div></span><br />
 <%
 Usuario u = (Usuario)request.getAttribute("usuario");
-out.println(u.getDatanascimento());
+
 %>
 <form action="Usuarios" method="post" id="formulario" >
 		<table>
@@ -132,7 +132,7 @@ out.println(u.getDatanascimento());
 			</td></tr>
 			<tr>
 			<td id="titulo_input">Data Nascimento: </td>
-			<td><input class="fakeupload" type="text" name="data_nascimento" value="<%=u.getDatanascimento() %>" id="data_nascimento" /></td></tr>
+			<td><input class="fakeupload" type="text" name="data_nascimento" value="<%=u.dataImpres(u.getDatanascimento()) %>" id="data_nascimento" /></td></tr>
 			<tr>
 			<td id="titulo_input">Cidade: </td>
 			<td><input class="fakeupload" type="text" name="cidade" value="<%=u.getCidade() %>" /></td></tr>

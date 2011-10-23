@@ -106,6 +106,26 @@ position:relative;
 color:#CCCCCC;
 font:  30px Arial, "Arial", Times, serif;
 }
+
+div.list_amigos  { 
+position:absolute;
+top:1px;
+bottom: 1px;
+left:1px;
+color:#666666;
+background: url(../imagens/titulo_amigos.png);
+font: 30px Arial, "Arial", Times, serif;
+width:337px;
+height: 52px;
+}
+
+div.amigos {
+position:relative;
+color:#CCCCCC;
+font:  30px Arial, "Arial", Times, serif;
+}
+
+
 #geral_conteudo{
 	width: 800px;
 	margin:auto;
@@ -191,3 +211,13 @@ input,SELECT {
  margin-bottom:10px;
  margin-top:2px;
  }
+ 
+
+#link_recados a:link,#link_recados a:visited{
+	float:left;
+	text-decoration: none;
+	color : gray;
+}
+#link_recados a:hover{
+	color: black;	
+}

@@ -50,8 +50,8 @@ if(s != null){
 
 <div style="float: right; border: 0px solid red; min-width: 250px;">
 <span id="titulo_pagina">
-<div class="sombra11">Lista de Amigos
-    <div class="texto1">Lista de Amigos
+<div class="amigos">
+    <div class="list_amigos">
     </div>
 </div></span><br />
 <div id="lista_amigos">

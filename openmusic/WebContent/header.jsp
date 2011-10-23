@@ -22,7 +22,7 @@
 <div class="item_menu"><a href="home.jsp">home</a></div> 
 <div class="item_menu"><a href="Perfil">perfil</a></div>
 <div class="item_menu"><a href="Recado">recados</a></div>
-<div class="item_menu"><a href="gravacao.jsp">gravação</a></div>
+<div class="item_menu"><a href="gravacao.jsp">gravação</a></div>	
 <div style="float: right; padding: 5px; ">
   <form method="post" action="/openmusic/Usuarios" name="form1" >
 	Busca:

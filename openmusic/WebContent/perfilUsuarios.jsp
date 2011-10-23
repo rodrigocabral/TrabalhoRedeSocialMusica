@@ -1,19 +1,18 @@
 <%@ include file="header.jsp" %>
 <%
-
 	AmigoRepository amigorepositorio = new AmigoRepository();
 	Usuario usuario = (Usuario)request.getAttribute("usuario");
 %> 
 <div id="geral_conteudo">
 <span id="titulo_pagina">
-<div class="sombra11">Perfil de <%=usuario.getNome() %>
-    <div class="texto1">Perfil de <%=usuario.getNome() %>
+<div class="sombra11"><%=usuario.getNome() %>
+    <div class="texto1"><%=usuario.getNome() %>
     </div>
 </div></span><br />
-<div style="float: left; border: 0px solid red;">
-<img src="fotos/<%=usuario.getFoto() %>" width="100" height="125">
+<div style="float: left; border: 0px solid red; margin-left: 5px; color: black;">
+<a href="usuarioFoto.jsp" title="Alterar foto"><img src="fotos/<%=usuario.getFoto() %>" width="145" height="186"></a>
 </div>
-<div id="lista_amigos">
+<div id="link_recados">
 <a href="Recado?cod=<%=usuario.getId() %>">Recados</a>
 </div>
 <%
@@ -27,14 +26,13 @@ if(request.getAttribute("amigo") == null && usuario.getId() != Integer.parseInt(
 <!-- atributo retorna confirmação de solicitação ou erro caso já tenha feito solicitação para este usuário -->
 <input type="hidden" value="<%=usuario.getId() %>" name="cod_solicitacao">
 <input id="efetuar" type="submit" value="Adicionar aos Amigos"/>
-
 </form>
 <%} %>
 
 <div style="float: right; border: 0px solid red; min-width: 250px;">
 <span id="titulo_pagina">
-<div class="sombra11">Lista de Amigos
-    <div class="texto1">Lista de Amigos
+<div class="amigos">
+    <div class="list_amigos">
     </div>
 </div></span><br />
 <div id="lista_amigos">
@@ -78,6 +76,5 @@ for(Amigo a : amigo){
 %>
 </div>
 </div>
-
 </body>
 </html> 

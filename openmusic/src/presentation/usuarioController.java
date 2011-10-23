@@ -236,7 +236,7 @@ public class usuarioController extends HttpServlet {
 //Pega o diretório /logo dentro do diretório atual de onde a
 //aplicação está rodando
 //String caminho = getServletContext().getRealPath("/logo")
-String caminho = "C:/Users/ROBSON/Documents/AulaJSP/openmusic/WebContent/fotos/";
+String caminho = "C:/Users/Marcelo/Projetos/openmusic/WebContent/fotos/";
 
 // Cria o diretório caso ele não exista
 File diretorio = new File(caminho);

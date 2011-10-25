@@ -57,7 +57,7 @@ public class MusicaRepository {
 		.setMaxResults(10).getResultList();
 	}
 	
-	public List getBySolicitacao(int cod){
+	public List getByUsuario(int cod){
 		return manager.createQuery("select m from Musica m join m.usuario u where u.id =:id")
 		.setParameter("id", cod)
 		.getResultList();

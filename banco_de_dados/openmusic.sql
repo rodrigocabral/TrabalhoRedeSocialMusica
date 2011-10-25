@@ -137,7 +137,24 @@ CREATE  TABLE IF NOT EXISTS `openmusic`.`mixagens` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-
+CREATE  TABLE IF NOT EXISTS `openmusic`.`votos` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `idusuario` INT NULL ,
+  `idmusica` INT NULL ,
+  PRIMARY KEY (`id`) ,
+  INDEX `idusuario` (`id` ASC) ,
+  INDEX `idmusica` (`id` ASC) ,
+  CONSTRAINT `idusuario`
+    FOREIGN KEY (`id` )
+    REFERENCES `openmusic`.`usuarios` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `idmusica`
+    FOREIGN KEY (`id` )
+    REFERENCES `openmusic`.`musicas` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

@@ -1,223 +1,441 @@
 @charset "utf-8";
 /* CSS Document */
-
-body{
+body {
 	margin: 0 auto;
 }
-a:link,a:visited{
+
+a:link,a:visited {
 	text-decoration: none;
-	color : #ffffff;
-}
-a:hover{
-	color: black;	
+	color: #FFFFFF;
 }
 
-#lista_amigos a:link,#lista_amigos a:visited{
+a:hover {
+	color: black;
+}
+
+#config a:link,#config a:visited {
 	text-decoration: none;
-	color : gray;
-}
-#lista_amigos a:hover{
-	color: black;	
+	color: gray;
 }
 
+#lista_amigos a:link,#lista_amigos a:visited {
+	text-decoration: none;
+	color: gray;
+}
 
-#menu{
-	background:url(../imagens/fundo_menu.png);
-	width:100%;
-	height:25px;
-	text-align:center;
+#lista_amigos a:hover {
+	color: black;
+}
+
+#lista_musicas a:link,#lista_amigos a:visited {
+	text-decoration: none;
+	color: gray;
+}
+
+#lista_musicas a:hover {
+	color: black;
+}
+
+#meio {
+	border: 1px solid red;
+	float: left;
+	min-height: 400px;
+	margin-left: 25px;
+	width: 605px;
+}
+
+#menu {
+	background: url(../imagens/fundo_menu.png);
+	width: 100%;
+	height: 25px;
+	text-align: center;
 	font-family: sans-serif;
 	font-size: 25px;
 	color: white;
 	display: table;
 }
 
-.item_menu{
-	padding-top:10px;
-	border: 0px solid blue; 
+.item_menu {
+	padding-top: 10px;
+	border: 0px solid blue;
 	margin-right: 30px;
-	float: left;	
+	font-size: 20px;
+	font-family: verdana;
+	float: left;
 }
 
-#geral_topo{
-	background:url(../imagens/fundo_topo.png);
-	width:100%;
-	height:160px;
-        border: 0px solid blue;
+#geral_topo {
+	background: url(../imagens/fundo_topo.png);
+	width: 100%;
+	height: 160px;
+	border: 0px solid blue;
 }
-#foto{
-	width:187px;
-	height:35px;
+
+#foto {
+	width: 187px;
+	height: 35px;
 	padding-bottom: 10px;
-	font-family:Verdana, Geneva, sans-serif;
-	font-size:12px;
-	float:right;
-	color:#333;
-	margin-right:15px;
-	background:url(../imagens/botao_foto.png);
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 12px;
+	float: right;
+	color: #333;
+	margin-right: 15px;
+	background: url(../imagens/botao_foto.png);
 }
-#efetuar{
-	width:187px;
-	height:35px;
+
+#efetuar {
+	width: 187px;
+	height: 35px;
 	padding-bottom: 10px;
-	font-family:Verdana, Geneva, sans-serif;
-	font-size:16px;
-	float:right;
-	color:#666666;
-	margin-right:15px;
-	background:url(../imagens/botao_foto.png);
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 16px;
+	float: right;
+	color: #666666;
+	margin-right: 15px;
+	background: url(../imagens/botao_foto.png);
 }
-#efetuar_busca{
-	width:187px;
-	height:35px;
+
+#efetuar_busca {
+	width: 187px;
+	height: 35px;
 	padding-bottom: 10px;
-	font-family:Verdana, Geneva, sans-serif;
-	font-size:16px;
-	color:#666666;
-	margin-right:15px;
-	background:url(../imagens/botao_foto.png);
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 16px;
+	color: #666666;
+	margin-right: 15px;
+	background: url(../imagens/botao_foto.png);
 }
-#conteudo_topo{
-	margin:auto;
-	width:800px;
-	height:128px;
+
+#conteudo_topo {
+	margin: auto;
+	width: 800px;
+	height: 128px;
 }
-#logomarca{
-	margin-top:28px;
-	margin-left: -39px;
-	float:left;
+
+#logomarca {
+	margin-top: 28px;
+	margin-left: -157px;
+	float: left;
 	background: url(../imagens/logo.png);
-	width:441px;
-	height:128px;
+	width: 441px;
+	height: 128px;
 }
 
 /* Home */
-div.texto1  { 
-position:absolute;
-top:1px;
-bottom: 1px;
-left:1px;
-color:#666666;
-font: 30px Arial, "Arial", Times, serif;
+div.texto1 {
+	position: absolute;
+	top: 1px;
+	bottom: 1px;
+	left: 1px;
+	color: #666666;
+	font: 30px Arial, "Arial", Times, serif;
 }
 
 div.sombra11 {
-position:relative;
-color:#CCCCCC;
-font:  30px Arial, "Arial", Times, serif;
+	position: relative;
+	color: #CCCCCC;
+	font: 30px Arial, "Arial", Times, serif;
 }
 
-div.list_amigos  { 
-position:absolute;
-top:1px;
-bottom: 1px;
-left:1px;
-color:#666666;
-background: url(../imagens/titulo_amigos.png);
-font: 30px Arial, "Arial", Times, serif;
-width:337px;
-height: 52px;
+div.list_musicas {
+	height: 255px;
+	float: right;
+	float: right;
+	float: right;
+	color: #666666;
+	background: url(../imagens/titulo_musicas.jpg) no-repeat;
+	font: 30px Arial, "Arial", Times, serif;
+	margin-bottom: 20px;
+	color: #666666;
+	background: url(../imagens/titulo_musicas.jpg) no-repeat;
+	font: 30px Arial, "Arial", Times, serif;
+	margin-bottom: 20px;
+	color: #666666;
+	background: url(../imagens/titulo_musicas.jpg) no-repeat;
+	font: 30px Arial, "Arial", Times, serif;
+	margin-bottom: 20px;
 }
 
-div.amigos {
-position:relative;
-color:#CCCCCC;
-font:  30px Arial, "Arial", Times, serif;
+div.list_amigos {
+	float: right;
+	color: #666666;
+	background: url(../imagens/titulo_amigos.png) no-repeat;
+	font: 30px Arial, "Arial", Times, serif;
+	clear: right;
 }
 
+#titulo_input.nome_amigo a {
+	color: #333333;
+}
 
-#geral_conteudo{
-	width: 800px;
-	margin:auto;
+a.texto_m:link,a.texto_m:visited {
+	color: #333333;
+}
+
+a.texto_m:hover {
+	background: #CCCCFF;
+}
+
+.texto_m {
+	padding-left: 20px;
+	margin-bottom: 5px;
+	font-family: arial;
+	font-size: 20px;
+	border: 1px solid red;
+	float: left;
+	width: 280px;
+}
+
+#geral_conteudo {
+	width: 1124px;
+	margin: auto;
 	min-height: 400px;
 }
-#titulo_pagina{
-	font-family: Arial, Helvetica, sans-serif;
-	margin-left:-30px!IMPORTANT;
-	width:auto;
-}
-#foto_geral{
-	display:table;
-	width:380px;
-	padding-left:10px;
-}
-#titulo_input.text_foto{
-	font-family: Arial, Helvetica, sans-serif;
-	margin-left:0px;
-	font-size:24px;
-	margin-top:10px;
-	margin-top:10px;
-	margin-bottom:15px;
-	display:table;
-	height:10px;
-	color:#CCC;
-}
-#restricao_foto{
-	font-family: Arial, Helvetica, sans-serif;
-	margin-left:0px;
-	font-size:12px;
-	text-align:center;
-	width:220px;
-	float:right;
-	margin-top:10px;
-	height:10px;
-	color:#999;
+
+.load {
+	border: 0px solid #333333;
+	float: right;
+	margin: 0px 0px 18px 0px;
+	width: 461px;
+	height: 116px;
 }
 
-#titulo_input{
+.texto_home {
+	float: left;
+	font-family: arial;
+	font-size: 12px;
+	font-weight: bold;
+	margin: 31px 0 -22px 9px;
+	width: 312px;
+}
+
+.texto_home_2 {
+	float: right;
+	font-family: arial;
+	font-size: 12px;
+	font-weight: bold;
+	margin: 31px 108px 0px 0px;
+}
+
+.linha {
+	background: url('../imagens/linha.jpg') no-repeat;
+	border: 0px solid red;
+	float: left;
+	height: 2px;
+	margin-left: 9px;
+	margin-top: 3px;
+	width: 374px;
+}
+
+#titulo_pagina {
 	font-family: Arial, Helvetica, sans-serif;
-	margin-left:10px;
-	font-size:14px;
-	height:10px;
-	color:#666;
+	margin-left: -30px !IMPORTANT;
+	width: auto;
+}
+
+#foto_geral {
+	display: table;
+	width: 380px;
+	padding-left: 10px;
+}
+
+#titulo_input.text_foto {
+	font-family: Arial, Helvetica, sans-serif;
+	margin-left: 0px;
+	font-size: 24px;
+	margin-top: 10px;
+	margin-top: 10px;
+	margin-bottom: 15px;
+	display: table;
+	height: 10px;
+	color: #CCC;
+}
+
+#restricao_foto {
+	font-family: Arial, Helvetica, sans-serif;
+	margin-left: 0px;
+	font-size: 12px;
+	text-align: center;
+	width: 220px;
+	float: right;
+	margin-top: 10px;
+	height: 10px;
+	color: #999;
+}
+
+#titulo_input {
+	font-family: Arial, Helvetica, sans-serif;
+	margin-left: 10px;
+	font-size: 14px;
+	height: 10px;
+	color: #666;
 }
 /* Home input efeito*/
-#quadro{
-	width:379px;
-	margin-left:10px;
-	height:75px;
+#quadro {
+	width: 379px;
+	margin-left: 10px;
+	height: 75px;
 }
-#file{
-	display:none;
+
+#file {
+	display: none;
 }
 
 .fakeupload {
-          width: 391PX;
-		  height:31PX;
-          background: url(../imagens/fundo_input.png);
-          cursor: default;
-    }
-.fakebusca{
-          width: 166PX;
-		  height:20PX;
-          background: url(../imagens/fundo_busca.png);
-          cursor: default;
-          border: 0px  solid red;
+	width: 391PX;
+	height: 31PX;
+	background: url(../imagens/fundo_input.png);
+	cursor: default;
 }
-input,SELECT {
- background-color: #FFF;
- border: 0px solid #e4e4e4;
- letter-spacing: 1px;
- font-size: 11px;
- color: #CCC;
- padding-left: 8px;
-  padding-right: 0px;
- font-size:20px;
- padding-top: 7px;
- padding-bottom: 0px;
- margin-left: 5px;
- height: 50px;
- vertical-align: middle;
- margin-bottom:10px;
- margin-top:2px;
- }
- 
 
-#link_recados a:link,#link_recados a:visited{
-	float:left;
+.fakebusca {
+	width: 166PX;
+	height: 20PX;
+	background: url(../imagens/fundo_busca.png);
+	cursor: default;
+	border: 0px solid red;
+}
+
+input,SELECT {
+	background-color: #FFF;
+	border: 0px solid #e4e4e4;
+	letter-spacing: 1px;
+	font-size: 11px;
+	color: #CCC;
+	padding-left: 8px;
+	padding-right: 0px;
+	font-size: 20px;
+	padding-top: 7px;
+	padding-bottom: 0px;
+	margin-left: 5px;
+	height: 50px;
+	vertical-align: middle;
+	margin-bottom: 10px;
+	margin-top: 2px;
+}
+
+#nome_perfil {
+	font-size: 24px;
+	font-family: arial;
+	color: #780000;
+	float: left;
+}
+
+#local {
+	clear: left;
+	color: #333333;
+	float: left;
+	font-family: verdana;
+	font-weight: bold;
+	margin-top: 5px;
+}
+
+#link_recados {
+	clear: left;
+	color: #000000;
+	float: left;
+	font-size: 14px;
+	font-family: arial;
+	font-weight: bold;
+	margin-top: 20px;
+}
+
+#link_recados a:link,#link_recados a:visited {
+	color: #000000;
 	text-decoration: none;
-	color : gray;
 }
-#link_recados a:hover{
-	color: black;	
+
+#gravador {
+	border: 1px solid #000000;
+	width: 432px;
+	float: left;
+	margin-left: 53px;
+	min-height: 240px;
 }
+
+#titulo_gravador {
+	width: 431px;
+	height: 69px;
+	background: url(../imagens/titulo_gravador.jpg) no-repeat;
+	padding: 44px 0px 0px 20px;
+}
+
+#rec {
+	margin-left: 47px;
+	border: 1px solid #000000;
+	width: 95px;
+	float: left;
+	height: 95px;
+	background: url(../imagens/ico_rec.png) no-repeat;
+}
+
+#stop {
+	margin-left: 10px;
+	border: 1px solid #000000;
+	width: 95px;
+	float: left;
+	height: 95px;
+	background: url(../imagens/ico_stop.png) no-repeat;
+}
+
+#save {
+	margin-left: 20px;
+	border: 1px solid #000000;
+	width: 65px;
+	float: left;
+	height: 95px;
+	background: url(../imagens/ico_save.png) no-repeat;
+}
+
+.box {
+	width: 473px;
+	height: 103px;
+	margin: 13px;
+	border: 1px solid #000000;
+	font-family: arial;
+	font-size: 11px;
+	color: #000000;
+}
+
+#lista_recados {
+	border: 1px solid #000000;
+	float: left;
+	clear: left;
+	margin-left: 23px;
+	width: 699px;
+}
+
+#area {
+	margin-top: 17px;
+	float: left;
+	clear: left;
+	background: url(../imagens/area.png) no-repeat;
+	width: 515px;
+	height: 131;
+}
+
+.area_scraps {
+  	background: url("../imagens/area_recado.png") no-repeat;
+    clear: left;
+    float: left;
+    height: 102px;
+    margin-top: 29px;
+    padding: 15px;
+    width: 612px;
+}
+
+.recado{
+	
+	border:1px solid red;
+    height: 80px;
+    width: 484px;
+    float: left;
+	
+}
+
+.excluir{
+	border:1px solid red;
+	float:left;
+	margin: 83px 5px 5px;
+}
+

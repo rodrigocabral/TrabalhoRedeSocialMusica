@@ -1,6 +1,6 @@
 <%@ include file="header.jsp" %>
 <style type="text/css" >
-   * { font-family: Verdana; font-size: 96%; }
+  
 label { display: block; margin-top: 10px; }
 label.error { float: none; color: red; margin: 0 .5em 0 0; vertical-align: top; font-size: 10px }
 p { clear: both; }
